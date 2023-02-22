@@ -42,7 +42,7 @@ class DrawerContainer extends StatelessWidget {
           ),
           ListTile(
             title: const Text('Formas de Pagamentos'),
-            onTap: () => _navigateTo(context, '/payment_forms'),
+            onTap: () => _navigateTo(context, '/payment_methods'),
           )
         ]),
       ),

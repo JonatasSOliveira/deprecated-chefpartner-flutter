@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 
 class DefaultListComponent extends StatelessWidget {
   final String buttonText;
+  final String formRouteName;
 
   const DefaultListComponent({
     Key? key,
     required this.buttonText,
+    required this.formRouteName,
   }) : super(key: key);
 
-  void _onPressNewItem(BuildContext context) {}
+  void _onPressNewItem(BuildContext context) {
+    Navigator.pushNamed(context, formRouteName);
+  }
 
   @override
   Widget build(BuildContext context) {

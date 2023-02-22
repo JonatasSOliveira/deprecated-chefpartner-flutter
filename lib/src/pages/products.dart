@@ -10,6 +10,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     return const DrawerContainer(
         title: 'Produtos',
-        child: DefaultListComponent(buttonText: 'Novo Produto'));
+        child: DefaultListComponent(
+            buttonText: 'Novo Produto', formRouteName: '/product_form'));
   }
 }

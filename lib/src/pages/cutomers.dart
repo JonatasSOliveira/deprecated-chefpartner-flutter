@@ -10,6 +10,7 @@ class Customers extends StatelessWidget {
   Widget build(BuildContext context) {
     return const DrawerContainer(
         title: 'Clientes',
-        child: DefaultListComponent(buttonText: 'Novo Cliente'));
+        child: DefaultListComponent(
+            buttonText: 'Novo Cliente', formRouteName: '/customer_form'));
   }
 }

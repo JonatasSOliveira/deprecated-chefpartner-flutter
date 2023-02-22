@@ -10,6 +10,7 @@ class Orders extends StatelessWidget {
   Widget build(BuildContext context) {
     return const DrawerContainer(
         title: 'Pedidos',
-        child: DefaultListComponent(buttonText: 'Novo Pedido'));
+        child: DefaultListComponent(
+            buttonText: 'Novo Pedido', formRouteName: '/order_form'));
   }
 }
