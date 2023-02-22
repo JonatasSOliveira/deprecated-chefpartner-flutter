@@ -1,3 +1,4 @@
+import 'package:chefpatner_mobile/src/components/default_form_component.dart';
 import 'package:flutter/material.dart';
 
 class PaymnetMethodForm extends StatefulWidget {
@@ -10,13 +11,6 @@ class PaymnetMethodForm extends StatefulWidget {
 class _PaymnetMethodFormState extends State<PaymnetMethodForm> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Formas de Pagamento'),
-      ),
-      body: const Center(
-        child: Text('Formas de Pagamento'),
-      ),
-    );
+    return const DefaultFormComponent();
   }
 }
