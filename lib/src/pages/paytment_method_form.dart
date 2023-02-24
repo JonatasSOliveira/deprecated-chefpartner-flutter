@@ -12,10 +12,15 @@ class PaymnetMethodForm extends StatefulWidget {
 class _PaymnetMethodFormState extends State<PaymnetMethodForm> {
   String _name = '';
 
+  void onConfirm() {
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
       title: 'Formulário Forma de Pagamento',
+      onConfirm: onConfirm,
       children: [
         Row(children: [
           Expanded(

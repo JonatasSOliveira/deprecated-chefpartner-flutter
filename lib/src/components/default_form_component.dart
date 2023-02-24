@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 
 class DefaultFormComponent extends StatelessWidget {
   final String title;
+  final VoidCallback onConfirm;
   final List<Widget> children;
 
   const DefaultFormComponent({
     Key? key,
     required this.title,
+    required this.onConfirm,
     required this.children,
   }) : super(key: key);
+
+  void onCancel(BuildContext context) {
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,10 @@ class DefaultFormComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                      onPressed: () {}, child: const Text('Cancelar')),
+                      onPressed: () => onCancel(context),
+                      child: const Text('Cancelar')),
                   ElevatedButton(
-                      onPressed: () {}, child: const Text('Confirmar')),
+                      onPressed: onConfirm, child: const Text('Confirmar')),
                 ],
               ),
             ])));
