@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/components/drawer_container.dart';
 import 'package:chefpatner_mobile/src/components/default_list_component.dart';
 
 class PaymentMethods extends StatelessWidget {
@@ -8,10 +7,9 @@ class PaymentMethods extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DrawerContainer(
+    return const DefaultListComponent(
         title: 'Formas de Pagamento',
-        child: DefaultListComponent(
-            buttonText: 'Nova Forma de Pagamento',
-            formRouteName: '/payment_method_form'));
+        buttonText: 'Nova Forma de Pagamento',
+        formRouteName: '/payment_method_form');
   }
 }

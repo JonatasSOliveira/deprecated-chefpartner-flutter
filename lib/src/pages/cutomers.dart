@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/components/drawer_container.dart';
 import 'package:chefpatner_mobile/src/components/default_list_component.dart';
 
 class Customers extends StatelessWidget {
@@ -8,9 +7,9 @@ class Customers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DrawerContainer(
+    return const DefaultListComponent(
         title: 'Clientes',
-        child: DefaultListComponent(
-            buttonText: 'Novo Cliente', formRouteName: '/customer_form'));
+        buttonText: 'Novo Cliente',
+        formRouteName: '/customer_form');
   }
 }

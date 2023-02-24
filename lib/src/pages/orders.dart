@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/components/drawer_container.dart';
 import 'package:chefpatner_mobile/src/components/default_list_component.dart';
 
 class Orders extends StatelessWidget {
@@ -8,9 +7,9 @@ class Orders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DrawerContainer(
+    return const DefaultListComponent(
         title: 'Pedidos',
-        child: DefaultListComponent(
-            buttonText: 'Novo Pedido', formRouteName: '/order_form'));
+        buttonText: 'Novo Pedido',
+        formRouteName: '/order_form');
   }
 }
