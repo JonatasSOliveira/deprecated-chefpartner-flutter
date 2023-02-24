@@ -1,5 +1,6 @@
-import 'package:chefpatner_mobile/src/components/default_form_component.dart';
 import 'package:flutter/material.dart';
+
+import 'package:chefpatner_mobile/src/components/default_form_component.dart';
 
 class PaymnetMethodForm extends StatefulWidget {
   const PaymnetMethodForm({super.key});
@@ -9,8 +10,24 @@ class PaymnetMethodForm extends StatefulWidget {
 }
 
 class _PaymnetMethodFormState extends State<PaymnetMethodForm> {
+  String _name = '';
+
   @override
   Widget build(BuildContext context) {
-    return const DefaultFormComponent();
+    return DefaultFormComponent(
+      title: 'Formulário Forma de Pagamento',
+      children: [
+        Row(children: [
+          Expanded(
+              child: TextField(
+            decoration:
+                const InputDecoration(label: Text('Nome'), hintText: ''),
+            onChanged: (value) => setState(() {
+              _name = value;
+            }),
+          )),
+        ])
+      ],
+    );
   }
 }
