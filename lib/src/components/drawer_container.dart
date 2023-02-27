@@ -50,9 +50,10 @@ class DrawerContainer extends StatelessWidget {
             )
           ]),
         ),
-        body: Padding(
+        body: SafeArea(
+            child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: child,
-        ));
+        )));
   }
 }

@@ -22,21 +22,22 @@ class DefaultFormComponent extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(children: [
-              ...children,
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                      onPressed: () => onCancel(context),
-                      child: const Text('Cancelar')),
-                  ElevatedButton(
-                      onPressed: onConfirm, child: const Text('Confirmar')),
-                ],
-              ),
-            ])));
+        body: SafeArea(
+            child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(children: [
+                  ...children,
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () => onCancel(context),
+                          child: const Text('Cancelar')),
+                      ElevatedButton(
+                          onPressed: onConfirm, child: const Text('Confirmar')),
+                    ],
+                  ),
+                ]))));
   }
 }
