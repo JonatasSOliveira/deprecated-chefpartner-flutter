@@ -17,43 +17,36 @@ class DrawerContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        drawer: Drawer(
-          child: ListView(padding: EdgeInsets.zero, children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.red,
-              ),
-              child: null,
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      drawer: Drawer(
+        child: ListView(padding: EdgeInsets.zero, children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.red,
             ),
-            ListTile(
-              title: const Text('Início'),
-              onTap: () => _navigateTo(context, '/'),
-            ),
-            ListTile(
-              title: const Text('Clientes'),
-              onTap: () => _navigateTo(context, '/customers'),
-            ),
-            ListTile(
-              title: const Text('Pedidos'),
-              onTap: () => _navigateTo(context, '/orders'),
-            ),
-            ListTile(
-              title: const Text('Produtos'),
-              onTap: () => _navigateTo(context, '/products'),
-            ),
-            ListTile(
-              title: const Text('Formas de Pagamentos'),
-              onTap: () => _navigateTo(context, '/payment_methods'),
-            )
-          ]),
-        ),
-        body: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: child,
-        )));
+            child: null,
+          ),
+          ListTile(
+            title: const Text('Clientes'),
+            onTap: () => _navigateTo(context, '/customers'),
+          ),
+          ListTile(
+            title: const Text('Pedidos'),
+            onTap: () => _navigateTo(context, '/orders'),
+          ),
+          ListTile(
+            title: const Text('Produtos'),
+            onTap: () => _navigateTo(context, '/products'),
+          ),
+          ListTile(
+            title: const Text('Formas de Pagamentos'),
+            onTap: () => _navigateTo(context, '/payment_methods'),
+          )
+        ]),
+      ),
+      body: child,
+    );
   }
 }

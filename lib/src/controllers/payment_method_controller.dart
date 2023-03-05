@@ -5,7 +5,7 @@ class PaymentMethodController {
   static final PaymentMethodDao _paymentMethodDao = PaymentMethodDao();
 
   static void _validadePaymentMethod(PaymentMethod paymentMethod) {
-    if (paymentMethod.name.isEmpty) {
+    if (paymentMethod.name == null || paymentMethod.name == '') {
       throw Exception('Nome da forma de pagamento é obrigatório');
     }
   }
