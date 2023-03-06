@@ -9,9 +9,9 @@ class DatabaseConnection {
   static Database? _db;
 
   static void _syncTables(Database db) {
-    db.execute(PaymentMethod.defineSQL().getCreateTableScript());
-    db.execute(Customer.defineSQL().getCreateTableScript());
-    db.execute(Product.defineSQL().getCreateTableScript());
+    db.execute(PaymentMethod.getSQLDefinition().getCreateTableScript());
+    db.execute(Customer.getSQLDefinition().getCreateTableScript());
+    db.execute(Product.getSQLDefinition().getCreateTableScript());
   }
 
   static Future<void> createDatabase() async {

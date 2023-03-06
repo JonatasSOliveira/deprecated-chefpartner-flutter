@@ -20,8 +20,17 @@ class Attribute {
   final String name;
   final AttributeType type;
   final bool isNulable;
+  final bool isForeignKey;
+  final String? foreignTable;
+  final String? foreignColumn;
 
-  Attribute({required this.name, required this.type, this.isNulable = false});
+  Attribute(
+      {required this.name,
+      required this.type,
+      this.isNulable = false,
+      this.isForeignKey = false,
+      this.foreignTable,
+      this.foreignColumn});
 }
 
 abstract class GenericModel {
@@ -40,7 +49,7 @@ abstract class GenericModel {
     this.deletedAt,
   });
 
-  GenericModel.defineSQL(String tableName, List<Attribute> attributes)
+  GenericModel.getSQLDefinition(String tableName, List<Attribute> attributes)
       : id = null,
         createdAt = null,
         updatedAt = null,
@@ -48,18 +57,42 @@ abstract class GenericModel {
         _tableName = tableName,
         _attributes = attributes;
 
-  String _getAtributeScript(Attribute attribute) {
-    return '${attribute.name} ${attribute.type.sqlType} ${!attribute.isNulable ? 'NOT' : ''} NULL';
+  String _getAtributesDefinitionScript() {
+    return _attributes
+        .map((attribute) =>
+            ',${attribute.name} ${attribute.type.sqlType} ${!attribute.isNulable ? 'NOT ' : ''}NULL')
+        .join('\n');
+  }
+
+  String _getForeignKeysDefinitionScript() {
+    final fkAttributes =
+        _attributes.where((attribute) => attribute.isForeignKey);
+
+    if (fkAttributes.isEmpty) {
+      return '';
+    }
+
+    return ',${fkAttributes.map((attribute) => 'FOREIGN KEY (${attribute.name}) REFERENCES ${attribute.foreignTable}(${attribute.foreignColumn})').join('\n')}';
+  }
+
+  String getTableName() {
+    return _tableName;
   }
 
   String getCreateTableScript() {
+    if (_attributes.isEmpty || _attributes.isEmpty) {
+      throw Exception(
+          'Method getCreateTableScript is only acess with getSQLDefinition constructor');
+    }
+
     return '''
       CREATE TABLE IF NOT EXISTS $_tableName (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        ${_attributes.map((attribute) => _getAtributeScript(attribute)).join(',\n')},
-        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        deleted_at TIMESTAMP
+        id INTEGER PRIMARY KEY AUTOINCREMENT
+        ${_getAtributesDefinitionScript()}
+        ,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ,updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ,deleted_at TIMESTAMP
+        ${_getForeignKeysDefinitionScript()}
       );
     ''';
   }

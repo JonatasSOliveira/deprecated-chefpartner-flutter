@@ -11,8 +11,8 @@ class PaymentMethod extends GenericModel {
     super.deletedAt,
   });
 
-  PaymentMethod.defineSQL()
+  PaymentMethod.getSQLDefinition()
       : name = null,
-        super.defineSQL('payment_method',
+        super.getSQLDefinition('payment_method',
             [Attribute(name: 'name', type: AttributeType.text)]);
 }

@@ -13,10 +13,10 @@ class Customer extends GenericModel {
     super.deletedAt,
   });
 
-  Customer.defineSQL()
+  Customer.getSQLDefinition()
       : name = null,
         federalDocument = null,
-        super.defineSQL('customer', [
+        super.getSQLDefinition('customer', [
           Attribute(name: 'name', type: AttributeType.text),
           Attribute(name: 'federal_document', type: AttributeType.text)
         ]);
