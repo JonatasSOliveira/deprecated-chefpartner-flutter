@@ -19,8 +19,9 @@ enum AttributeType {
 class Attribute {
   final String name;
   final AttributeType type;
+  final bool isNulable;
 
-  Attribute(this.name, this.type);
+  Attribute({required this.name, required this.type, this.isNulable = false});
 }
 
 abstract class GenericModel {
@@ -47,11 +48,15 @@ abstract class GenericModel {
         _tableName = tableName,
         _attributes = attributes;
 
+  String _getAtributeScript(Attribute attribute) {
+    return '${attribute.name} ${attribute.type.sqlType} ${!attribute.isNulable ? 'NOT' : ''} NULL';
+  }
+
   String getCreateTableScript() {
     return '''
       CREATE TABLE IF NOT EXISTS $_tableName (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        ${_attributes.map((e) => '${e.name} ${e.type.sqlType}').join(',\n')},
+        ${_attributes.map((attribute) => _getAtributeScript(attribute)).join(',\n')},
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         deleted_at TIMESTAMP
