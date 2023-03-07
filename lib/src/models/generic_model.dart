@@ -85,7 +85,7 @@ abstract class GenericModel {
           'Method getCreateTableScript is only acess with getSQLDefinition constructor');
     }
 
-    return '''
+    final String script = '''
       CREATE TABLE IF NOT EXISTS $_tableName (
         id INTEGER PRIMARY KEY AUTOINCREMENT
         ${_getAtributesDefinitionScript()}
@@ -95,5 +95,8 @@ abstract class GenericModel {
         ${_getForeignKeysDefinitionScript()}
       );
     ''';
+
+    print(script);
+    return script;
   }
 }

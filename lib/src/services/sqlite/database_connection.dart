@@ -1,17 +1,19 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:chefpatner_mobile/src/models/customer.dart';
 import 'package:chefpatner_mobile/src/models/payment_method.dart';
 import 'package:chefpatner_mobile/src/models/product.dart';
+import 'package:chefpatner_mobile/src/models/customer.dart';
+import 'package:chefpatner_mobile/src/models/customer_address.dart';
 
 class DatabaseConnection {
   static Database? _db;
 
   static void _syncTables(Database db) {
     db.execute(PaymentMethod.getSQLDefinition().getCreateTableScript());
-    db.execute(Customer.getSQLDefinition().getCreateTableScript());
     db.execute(Product.getSQLDefinition().getCreateTableScript());
+    db.execute(Customer.getSQLDefinition().getCreateTableScript());
+    db.execute(CustomerAddress.getSQLDefinition().getCreateTableScript());
   }
 
   static Future<void> createDatabase() async {
