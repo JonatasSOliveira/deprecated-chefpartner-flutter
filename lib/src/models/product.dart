@@ -14,15 +14,4 @@ class Product extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
-
-  Product.getSQLDefinition()
-      : name = null,
-        price = null,
-        description = null,
-        super.getSQLDefinition('product', [
-          Attribute(name: 'name', type: AttributeType.text),
-          Attribute(
-              name: 'description', type: AttributeType.text, isNulable: true),
-          Attribute(name: 'price', type: AttributeType.integer)
-        ]);
 }

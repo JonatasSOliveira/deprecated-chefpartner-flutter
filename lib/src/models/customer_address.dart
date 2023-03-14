@@ -23,31 +23,4 @@ class CustomerAddress extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
-
-  CustomerAddress.getSQLDefinition()
-      : customer = null,
-        address = null,
-        city = null,
-        state = null,
-        number = null,
-        complement = null,
-        referencePoint = null,
-        super.getSQLDefinition('customer_address', [
-          Attribute(
-              name: 'customer_id',
-              type: AttributeType.integer,
-              isForeignKey: true,
-              foreignTable: 'customer',
-              foreignColumn: 'id'),
-          Attribute(name: 'address', type: AttributeType.text),
-          Attribute(name: 'city', type: AttributeType.text),
-          Attribute(name: 'state', type: AttributeType.text),
-          Attribute(name: 'number', type: AttributeType.text),
-          Attribute(
-              name: 'complement', type: AttributeType.text, isNulable: true),
-          Attribute(
-              name: 'reference_point',
-              type: AttributeType.text,
-              isNulable: true)
-        ]);
 }

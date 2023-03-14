@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/controllers/payment_method_controller.dart';
 import 'package:chefpatner_mobile/src/models/payment_method.dart';
 import 'package:chefpatner_mobile/src/components/default_form_component.dart';
 
@@ -14,18 +13,7 @@ class PaymnetMethodForm extends StatefulWidget {
 class _PaymnetMethodFormState extends State<PaymnetMethodForm> {
   String _name = '';
 
-  void onConfirm() async {
-    PaymentMethod paymentMethod = PaymentMethod(
-      name: _name,
-    );
-
-    PaymentMethodController.save(paymentMethod).then((isSaved) => {
-          if (isSaved)
-            {
-              Navigator.of(context).pop(),
-            }
-        });
-  }
+  void onConfirm() async {}
 
   @override
   Widget build(BuildContext context) {

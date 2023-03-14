@@ -9,14 +9,14 @@ import 'package:chefpatner_mobile/src/pages/paytment_method_form.dart';
 import 'package:chefpatner_mobile/src/pages/order_form.dart';
 import 'package:chefpatner_mobile/src/pages/product_form.dart';
 import 'package:chefpatner_mobile/src/pages/customer_form.dart';
-import 'package:chefpatner_mobile/src/services/sqlite/database_connection.dart';
+import 'package:chefpatner_mobile/src/database/sqlite_database_connection.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DatabaseConnection.createDatabase();
+    SQLiteDatabaseConnection.createDatabase();
 
     return MaterialApp(
       title: 'Flutter Demo',

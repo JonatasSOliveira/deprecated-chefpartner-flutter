@@ -12,12 +12,4 @@ class Customer extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
-
-  Customer.getSQLDefinition()
-      : name = null,
-        federalDocument = null,
-        super.getSQLDefinition('customer', [
-          Attribute(name: 'name', type: AttributeType.text),
-          Attribute(name: 'federal_document', type: AttributeType.text)
-        ]);
 }
