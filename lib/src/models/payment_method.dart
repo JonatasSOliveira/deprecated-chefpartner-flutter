@@ -5,7 +5,7 @@ class PaymentMethod extends GenericModel {
 
   PaymentMethod({
     super.id,
-    required this.name,
+    this.name,
     super.createdAt,
     super.updatedAt,
     super.deletedAt,

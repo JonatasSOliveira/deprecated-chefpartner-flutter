@@ -6,8 +6,6 @@ class PaymentMethodDM extends GenericDM {
           tableName: 'payment_method',
           attributes: [
             Attribute(name: 'name', type: AttributeType.text),
-            Attribute(name: 'description', type: AttributeType.text),
-            Attribute(name: 'price', type: AttributeType.integer),
           ],
         );
 }

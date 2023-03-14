@@ -1,3 +1,4 @@
+import 'package:chefpatner_mobile/src/controllers/payment_method_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chefpatner_mobile/src/models/payment_method.dart';
@@ -13,7 +14,10 @@ class PaymnetMethodForm extends StatefulWidget {
 class _PaymnetMethodFormState extends State<PaymnetMethodForm> {
   String _name = '';
 
-  void onConfirm() async {}
+  void onConfirm() async {
+    final paymentMethod = PaymentMethod(name: _name);
+    await PaymentMethodController().create(paymentMethod);
+  }
 
   @override
   Widget build(BuildContext context) {
