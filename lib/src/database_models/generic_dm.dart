@@ -77,4 +77,14 @@ abstract class GenericDM {
       );
     ''';
   }
+
+  String getInsertScript(List<String> attributes) {
+    return '''
+      INSERT INTO $_tableName (
+        ${attributes.join(",")}
+      ) VALUES (
+        ${attributes.map((attribute) => '?').join(',')}
+      );
+    ''';
+  }
 }
