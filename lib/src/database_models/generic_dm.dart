@@ -87,4 +87,12 @@ abstract class GenericDM {
       );
     ''';
   }
+
+  String getSoftDeleteScript() {
+    return '''
+      UPDATE $_tableName
+      SET deleted_at = CURRENT_TIMESTAMP
+      WHERE id = ?;
+    ''';
+  }
 }

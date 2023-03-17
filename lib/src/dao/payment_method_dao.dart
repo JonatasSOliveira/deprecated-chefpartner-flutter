@@ -11,4 +11,11 @@ class PaymentMethodDAO {
 
     await dbConnection.rawInsert(script, [paymentMethod.name]);
   }
+
+  Future<void> softDelete(int paymentMethodId) async {
+    final dbConnection = await SQLiteDatabaseConnection.getDatabase();
+    final script = _paymentMethodDM.getSoftDeleteScript();
+
+    await dbConnection.rawUpdate(script, [paymentMethodId]);
+  }
 }
