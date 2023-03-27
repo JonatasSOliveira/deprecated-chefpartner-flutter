@@ -1,7 +1,7 @@
 import 'package:chefpatner_mobile/src/models/generic_model.dart';
 
 class PaymentMethod extends GenericModel {
-  final String? name;
+  String? name;
 
   PaymentMethod({
     super.id,
@@ -10,4 +10,8 @@ class PaymentMethod extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
+
+  PaymentMethod.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+    name = map['name'];
+  }
 }

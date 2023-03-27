@@ -1,18 +1,15 @@
 import 'package:chefpatner_mobile/src/dao/payment_method_dao.dart';
 import 'package:chefpatner_mobile/src/models/payment_method.dart';
+import 'package:chefpatner_mobile/src/services/generic_service.dart';
 
-class PaymentMethodService {
-  final PaymentMethodDAO _paymentMethodDAO = PaymentMethodDAO();
+class PaymentMethodService
+    extends GenericService<PaymentMethod, PaymentMethodDAO> {
+  PaymentMethodService() : super(dao: PaymentMethodDAO());
 
-  void _validatePaymentMethod(PaymentMethod paymentMethod) {
-    if (paymentMethod.name == null || paymentMethod.name == '') {
+  @override
+  void validateModel(PaymentMethod model) {
+    if (model.name == null || model.name == '') {
       throw ArgumentError('Name is required');
     }
-  }
-
-  Future<void> create(PaymentMethod paymentMethod) async {
-    _validatePaymentMethod(paymentMethod);
-
-    await _paymentMethodDAO.create(paymentMethod);
   }
 }

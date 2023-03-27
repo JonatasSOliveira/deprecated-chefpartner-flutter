@@ -88,6 +88,10 @@ abstract class GenericDM {
     ''';
   }
 
+  String getSelectAllScript() {
+    return 'SELECT * FROM $_tableName WHERE deleted_at IS NULL';
+  }
+
   String getSoftDeleteScript() {
     return '''
       UPDATE $_tableName
