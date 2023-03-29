@@ -1,4 +1,4 @@
-# chefpatner_mobile
+# chefpartner_mobile
 
 A new Flutter project.
 

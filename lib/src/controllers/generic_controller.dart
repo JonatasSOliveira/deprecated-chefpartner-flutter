@@ -1,5 +1,5 @@
-import 'package:chefpatner_mobile/src/models/generic_model.dart';
-import 'package:chefpatner_mobile/src/services/generic_service.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/services/generic_service.dart';
 
 abstract class GenericController<M extends GenericModel,
     S extends GenericService> {

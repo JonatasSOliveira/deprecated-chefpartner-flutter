@@ -1,5 +1,5 @@
-import 'package:chefpatner_mobile/src/models/customer.dart';
-import 'package:chefpatner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/models/customer.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 class CustomerAddress extends GenericModel {
   final Customer? customer;

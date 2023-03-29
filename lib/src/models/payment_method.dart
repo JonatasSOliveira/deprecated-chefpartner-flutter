@@ -1,4 +1,4 @@
-import 'package:chefpatner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 class PaymentMethod extends GenericModel {
   String? name;

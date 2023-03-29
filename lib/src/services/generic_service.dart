@@ -1,5 +1,5 @@
-import 'package:chefpatner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpatner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 abstract class GenericService<M extends GenericModel, DAO extends GenericDAO> {
   late final DAO _dao;

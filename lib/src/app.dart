@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/pages/home.dart';
-import 'package:chefpatner_mobile/src/pages/cutomers.dart';
-import 'package:chefpatner_mobile/src/pages/orders.dart';
-import 'package:chefpatner_mobile/src/pages/payment_methods.dart';
-import 'package:chefpatner_mobile/src/pages/products.dart';
-import 'package:chefpatner_mobile/src/pages/paytment_method_form.dart';
-import 'package:chefpatner_mobile/src/pages/order_form.dart';
-import 'package:chefpatner_mobile/src/pages/product_form.dart';
-import 'package:chefpatner_mobile/src/pages/customer_form.dart';
-import 'package:chefpatner_mobile/src/database/sqlite_database_connection.dart';
+import 'package:chefpartner_mobile/src/pages/home.dart';
+import 'package:chefpartner_mobile/src/pages/cutomers.dart';
+import 'package:chefpartner_mobile/src/pages/orders.dart';
+import 'package:chefpartner_mobile/src/pages/payment_methods.dart';
+import 'package:chefpartner_mobile/src/pages/products.dart';
+import 'package:chefpartner_mobile/src/pages/paytment_method_form.dart';
+import 'package:chefpartner_mobile/src/pages/order_form.dart';
+import 'package:chefpartner_mobile/src/pages/product_form.dart';
+import 'package:chefpartner_mobile/src/pages/customer_form.dart';
+import 'package:chefpartner_mobile/src/database/sqlite_database_connection.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

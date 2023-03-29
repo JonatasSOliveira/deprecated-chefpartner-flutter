@@ -1,4 +1,4 @@
-import 'package:chefpatner_mobile/src/components/drawer_container.dart';
+import 'package:chefpartner_mobile/src/components/drawer_container.dart';
 import 'package:flutter/material.dart';
 
 class DefaultListComponent extends StatelessWidget {

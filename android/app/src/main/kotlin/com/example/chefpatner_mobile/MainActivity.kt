@@ -1,4 +1,4 @@
-package com.example.chefpatner_mobile
+package com.example.chefpartner_mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

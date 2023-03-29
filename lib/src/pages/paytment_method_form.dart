@@ -1,8 +1,8 @@
-import 'package:chefpatner_mobile/src/controllers/payment_method_controller.dart';
+import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/models/payment_method.dart';
-import 'package:chefpatner_mobile/src/components/default_form_component.dart';
+import 'package:chefpartner_mobile/src/models/payment_method.dart';
+import 'package:chefpartner_mobile/src/components/default_form_component.dart';
 
 class PaymnetMethodForm extends StatefulWidget {
   const PaymnetMethodForm({super.key});

@@ -1,5 +1,5 @@
-import 'package:chefpatner_mobile/src/database_models/customer_dm.dart';
-import 'package:chefpatner_mobile/src/database_models/generic_dm.dart';
+import 'package:chefpartner_mobile/src/database_models/customer_dm.dart';
+import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
 
 class CustomerAddressDM extends GenericDM {
   CustomerAddressDM()

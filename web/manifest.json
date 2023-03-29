@@ -1,6 +1,6 @@
 {
-    "name": "chefpatner_mobile",
-    "short_name": "chefpatner_mobile",
+    "name": "chefpartner_mobile",
+    "short_name": "chefpartner_mobile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

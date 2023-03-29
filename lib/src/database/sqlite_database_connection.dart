@@ -1,10 +1,10 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:chefpatner_mobile/src/database_models/customer_address_dm.dart';
-import 'package:chefpatner_mobile/src/database_models/product_dm.dart';
-import 'package:chefpatner_mobile/src/database_models/customer_dm.dart';
-import 'package:chefpatner_mobile/src/database_models/payment_method_dm.dart';
+import 'package:chefpartner_mobile/src/database_models/customer_address_dm.dart';
+import 'package:chefpartner_mobile/src/database_models/product_dm.dart';
+import 'package:chefpartner_mobile/src/database_models/customer_dm.dart';
+import 'package:chefpartner_mobile/src/database_models/payment_method_dm.dart';
 
 class SQLiteDatabaseConnection {
   static Database? _db;
@@ -21,11 +21,8 @@ class SQLiteDatabaseConnection {
       return;
     }
 
-    String caminho = join(await getDatabasesPath(), 'chefpatner.db');
-    _db = await openDatabase(
-      caminho,
-      onOpen: (db) => _syncTables(db),
-    );
+    String path = join(await getDatabasesPath(), 'chefpartner.db');
+    _db = await openDatabase(path, onOpen: (db) => _syncTables(db));
   }
 
   static Future<Database> getDatabase() async {

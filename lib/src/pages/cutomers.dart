@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:chefpatner_mobile/src/components/default_list_component.dart';
+import 'package:chefpartner_mobile/src/components/default_list_component.dart';
 
 class Customers extends StatelessWidget {
   const Customers({super.key});
