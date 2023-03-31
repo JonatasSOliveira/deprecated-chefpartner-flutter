@@ -1,9 +1,9 @@
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 class Product extends GenericModel {
-  final String? name;
-  final String? description;
-  final int? price;
+  String? name;
+  String? description;
+  int? price;
 
   Product({
     super.id,
@@ -14,4 +14,8 @@ class Product extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
+
+  Product.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+    name = map['name'];
+  }
 }

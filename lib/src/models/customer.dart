@@ -1,8 +1,8 @@
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 class Customer extends GenericModel {
-  final String? name;
-  final String? federalDocument;
+  String? name;
+  String? federalDocument;
 
   Customer({
     super.id,
@@ -12,4 +12,8 @@ class Customer extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
+
+  Customer.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+    name = map['name'];
+  }
 }

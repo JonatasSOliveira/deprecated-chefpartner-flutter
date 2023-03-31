@@ -2,13 +2,13 @@ import 'package:chefpartner_mobile/src/models/customer.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 class CustomerAddress extends GenericModel {
-  final Customer? customer;
-  final String? address;
-  final String? city;
-  final String? state;
-  final String? number;
-  final String? complement;
-  final String? referencePoint;
+  Customer? customer;
+  String? address;
+  String? city;
+  String? state;
+  String? number;
+  String? complement;
+  String? referencePoint;
 
   CustomerAddress({
     super.id,
@@ -23,4 +23,9 @@ class CustomerAddress extends GenericModel {
     super.updatedAt,
     super.deletedAt,
   });
+
+  CustomerAddress.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+    customer =
+        map['customer'] != null ? Customer.fromMap(map['customer']) : null;
+  }
 }

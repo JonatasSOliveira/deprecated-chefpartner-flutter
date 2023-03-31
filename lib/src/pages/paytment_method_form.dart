@@ -30,9 +30,7 @@ class _PaymnetMethodFormState extends State<PaymnetMethodForm> {
               child: TextField(
             decoration:
                 const InputDecoration(label: Text('Nome'), hintText: ''),
-            onChanged: (value) => setState(() {
-              _name = value;
-            }),
+            onChanged: (value) => setState(() => _name = value),
           )),
         ])
       ],

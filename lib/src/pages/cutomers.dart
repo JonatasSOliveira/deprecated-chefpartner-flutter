@@ -1,3 +1,4 @@
+import 'package:chefpartner_mobile/src/controllers/customer_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/components/default_list_component.dart';
@@ -7,9 +8,10 @@ class Customers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultListComponent(
+    return DefaultListComponent(
         title: 'Clientes',
         buttonText: 'Novo Cliente',
-        formRouteName: '/customer_form');
+        formRouteName: '/customer_form',
+        controller: CustomerController());
   }
 }
