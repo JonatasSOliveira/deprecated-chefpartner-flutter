@@ -13,8 +13,9 @@ abstract class GenericModel {
 
   GenericModel.fromMap(Map<String, dynamic> map) {
     id = map['id'];
-    createdAt = map['created_at'];
-    updatedAt = map['updated_at'];
-    deletedAt = map['deleted_at'];
+    createdAt = DateTime.parse(map['created_at']);
+    updatedAt = DateTime.parse(map['updated_at']);
+    deletedAt =
+        map['deleted_at'] != null ? DateTime.parse(map['deleted_at']) : null;
   }
 }
