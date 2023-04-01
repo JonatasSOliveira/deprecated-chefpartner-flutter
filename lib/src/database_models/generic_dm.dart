@@ -34,8 +34,8 @@ class Attribute {
 }
 
 abstract class GenericDM {
-  late final String _tableName;
-  late final List<Attribute> _attributes;
+  final String _tableName;
+  final List<Attribute> _attributes;
 
   GenericDM({
     required String tableName,

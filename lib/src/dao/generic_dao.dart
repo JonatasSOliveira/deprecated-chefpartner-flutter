@@ -3,8 +3,8 @@ import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 abstract class GenericDAO<DM extends GenericDM, M extends GenericModel> {
-  late final DM _databaseModel;
-  late final List<String> _defaultInsertAttributes;
+  final DM _databaseModel;
+  final List<String> _defaultInsertAttributes;
 
   GenericDAO({required databaseModel, required defaultInsertAttributes})
       : _databaseModel = databaseModel,

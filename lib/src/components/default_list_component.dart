@@ -1,6 +1,5 @@
 import 'package:chefpartner_mobile/src/components/drawer_container.dart';
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
 import 'package:flutter/material.dart';
 
 class DefaultListComponent extends StatefulWidget {
