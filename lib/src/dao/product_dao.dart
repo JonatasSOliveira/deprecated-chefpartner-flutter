@@ -8,7 +8,7 @@ class ProductDAO extends GenericDAO<ProductDM, Product> {
 
   @override
   List<Object?> getAttributesValues(Product model) {
-    return [model.name];
+    return [model.getName()];
   }
 
   @override

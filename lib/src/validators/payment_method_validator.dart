@@ -5,7 +5,7 @@ import 'package:chefpartner_mobile/src/models/payment_method.dart';
 class PaymentMethodValidator implements ValidatorInterface<PaymentMethod> {
   @override
   void createValidation(PaymentMethod model) {
-    if (model.name == null || model.name!.isEmpty) {
+    if (model.getName().isEmpty) {
       throw ValidationException('Payment method name is required');
     }
   }

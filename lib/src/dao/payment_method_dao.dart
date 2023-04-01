@@ -10,7 +10,7 @@ class PaymentMethodDAO extends GenericDAO<PaymentMethodDM, PaymentMethod> {
 
   @override
   List<Object?> getAttributesValues(PaymentMethod model) {
-    return [model.name];
+    return [model.getName()];
   }
 
   @override

@@ -12,6 +12,7 @@ class Orders extends StatelessWidget {
         title: 'Pedidos',
         buttonText: 'Novo Pedido',
         formRouteName: '/order_form',
-        controller: OrderController());
+        controller: OrderController(),
+        getModelDisplayValue: (order) => '');
   }
 }

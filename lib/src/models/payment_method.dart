@@ -1,17 +1,21 @@
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
 class PaymentMethod extends GenericModel {
-  String? name;
+  String _name = '';
 
   PaymentMethod({
     super.id,
-    this.name,
+    required String name,
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
-  });
+  }) : _name = name;
 
   PaymentMethod.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
-    name = map['name'];
+    _name = map['name'];
+  }
+
+  String getName() {
+    return _name;
   }
 }

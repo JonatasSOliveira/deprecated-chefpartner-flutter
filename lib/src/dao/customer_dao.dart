@@ -8,7 +8,7 @@ class CustomerDAO extends GenericDAO<CustomerDM, Customer> {
 
   @override
   List<Object?> getAttributesValues(Customer model) {
-    return [model.name];
+    return [model.getName()];
   }
 
   @override
