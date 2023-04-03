@@ -10,8 +10,9 @@ class DefaultFormArguments {
 
   static GenericModel? getEditModel(BuildContext context) {
     final arguments =
-        ModalRoute.of(context)!.settings.arguments as DefaultFormArguments;
-    return arguments.model;
+        ModalRoute.of(context)?.settings.arguments as DefaultFormArguments?;
+
+    return arguments?.model;
   }
 }
 
