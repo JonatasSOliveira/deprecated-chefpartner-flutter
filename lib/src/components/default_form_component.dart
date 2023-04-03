@@ -28,8 +28,13 @@ class DefaultFormComponent extends StatelessWidget {
     required this.children,
   }) : super(key: key);
 
-  void onCancel(BuildContext context) {
-    Navigator.of(context).pop();
+  void _closeForm(BuildContext context) => Navigator.of(context).pop();
+
+  void _cancelForm(BuildContext context) => _closeForm(context);
+
+  void _confirmForm(BuildContext context) {
+    onConfirm();
+    _closeForm(context);
   }
 
   @override
@@ -48,10 +53,11 @@ class DefaultFormComponent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
-                          onPressed: () => onCancel(context),
+                          onPressed: () => _cancelForm(context),
                           child: const Text('Cancelar')),
                       ElevatedButton(
-                          onPressed: onConfirm, child: const Text('Confirmar')),
+                          onPressed: () => _confirmForm(context),
+                          child: const Text('Confirmar')),
                     ],
                   ),
                 ]))));
