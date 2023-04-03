@@ -18,5 +18,5 @@ Map<String, Widget Function(BuildContext)> screenRoutes = {
   '/products': (context) => const Products(),
   '/product_form': (context) => const ProductForm(),
   '/payment_methods': (context) => const PaymentMethods(),
-  '/payment_method_form': (context) => const PaymnetMethodForm(),
+  '/payment_method_form': (context) => const PaymentMethodForm(),
 };

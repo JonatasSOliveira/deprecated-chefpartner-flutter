@@ -7,7 +7,7 @@ class OrderDAO extends GenericDAO<OrderDM, Order> {
 
   @override
   List<Object?> getAttributesValues(Order model) {
-    return [model.id];
+    return [];
   }
 
   @override

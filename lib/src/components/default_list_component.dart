@@ -1,3 +1,4 @@
+import 'package:chefpartner_mobile/src/components/default_form_component.dart';
 import 'package:chefpartner_mobile/src/components/drawer_container.dart';
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
@@ -41,8 +42,38 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
     });
   }
 
-  void _onPressNewItem(BuildContext context) {
+  void _openModelCreateForm(BuildContext context) {
     Navigator.pushNamed(context, widget.formRouteName);
+  }
+
+  void _openModelEditForm(BuildContext context, GenericModel model) {
+    Navigator.pushNamed(context, widget.formRouteName,
+        arguments: DefaultFormArguments(model: model));
+  }
+
+  Widget renderItemList(BuildContext context) {
+    if (_modelsList.isNotEmpty) {
+      return Expanded(
+          child: ListView.builder(
+              itemCount: _modelsList.length,
+              itemBuilder: (context, index) => ListTile(
+                  trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+                    IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () =>
+                          _openModelEditForm(context, _modelsList[index]),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () => {},
+                    )
+                  ]),
+                  title: Text(
+                    widget.getModelDisplayValue(_modelsList[index]),
+                  ))));
+    }
+
+    return const Text('Nenhum item encontrado');
   }
 
   @override
@@ -51,20 +82,10 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
         title: widget.title,
         child: Center(
             child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          if (_modelsList.isNotEmpty)
-            Expanded(
-                child: ListView.builder(
-                    itemCount: _modelsList.length,
-                    itemBuilder: (context, index) => ListTile(
-                            title: Text(
-                          widget.getModelDisplayValue(_modelsList[index]),
-                        ))))
-          else
-            const Text('Nenhum item encontrado'),
-          const Text('Nenhum item encontrado'),
+          renderItemList(context),
           ElevatedButton(
             child: Text(widget.buttonText),
-            onPressed: () => _onPressNewItem(context),
+            onPressed: () => _openModelCreateForm(context),
           )
         ])));
   }

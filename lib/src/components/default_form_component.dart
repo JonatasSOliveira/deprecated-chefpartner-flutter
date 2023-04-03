@@ -1,4 +1,19 @@
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 import 'package:flutter/material.dart';
+
+class DefaultFormArguments {
+  final GenericModel model;
+
+  const DefaultFormArguments({
+    required this.model,
+  });
+
+  static GenericModel? getEditModel(BuildContext context) {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as DefaultFormArguments;
+    return arguments.model;
+  }
+}
 
 class DefaultFormComponent extends StatelessWidget {
   final String title;

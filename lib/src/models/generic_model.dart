@@ -1,21 +1,32 @@
 abstract class GenericModel {
-  dynamic id;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  DateTime? deletedAt;
+  dynamic _id;
+  DateTime? _createdAt;
+  DateTime? _updatedAt;
+  DateTime? _deletedAt;
 
   GenericModel({
-    this.id,
-    this.createdAt,
-    this.updatedAt,
-    this.deletedAt,
-  });
+    dynamic id,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    DateTime? deletedAt,
+  })  : _id = id,
+        _createdAt = createdAt,
+        _updatedAt = updatedAt,
+        _deletedAt = deletedAt;
 
   GenericModel.fromMap(Map<String, dynamic> map) {
-    id = map['id'];
-    createdAt = DateTime.parse(map['created_at']);
-    updatedAt = DateTime.parse(map['updated_at']);
-    deletedAt =
+    _id = map['id'];
+    _createdAt = DateTime.parse(map['created_at']);
+    _updatedAt = DateTime.parse(map['updated_at']);
+    _deletedAt =
         map['deleted_at'] != null ? DateTime.parse(map['deleted_at']) : null;
   }
+
+  dynamic getId() => _id;
+
+  DateTime? getCreatedAt() => _createdAt;
+
+  DateTime? getUpdatedAt() => _updatedAt;
+
+  DateTime? getDeletedAt() => _deletedAt;
 }
