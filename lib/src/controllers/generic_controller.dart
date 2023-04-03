@@ -13,6 +13,10 @@ abstract class GenericController<M extends GenericModel,
     await _service.create(model);
   }
 
+  Future<void> update(dynamic modelId, M model) async {
+    await _service.update(modelId, model);
+  }
+
   Future<List<M>> listAll() async {
     return await _service.listAll();
   }

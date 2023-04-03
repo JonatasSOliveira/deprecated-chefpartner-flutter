@@ -36,6 +36,12 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
 
   void _onConfirm() async {
     final paymentMethod = PaymentMethod(name: _name);
+
+    if (_id != null) {
+      await PaymentMethodController().update(_id, paymentMethod);
+      return;
+    }
+
     await PaymentMethodController().create(paymentMethod);
   }
 

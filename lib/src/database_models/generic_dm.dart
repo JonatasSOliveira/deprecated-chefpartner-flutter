@@ -92,6 +92,14 @@ abstract class GenericDM {
     return 'SELECT * FROM $_tableName WHERE deleted_at IS NULL';
   }
 
+  String getUpdateScript(List<String> attributes) {
+    return '''
+      UPDATE $_tableName
+      SET ${attributes.map((attribute) => '$attribute = ?').join(',')}
+      WHERE id = ?;
+    ''';
+  }
+
   String getSoftDeleteScript() {
     return '''
       UPDATE $_tableName

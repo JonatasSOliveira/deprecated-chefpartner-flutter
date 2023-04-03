@@ -16,8 +16,17 @@ abstract class GenericService<M extends GenericModel,
 
   Future<void> create(M model) async {
     try {
-      _validator?.createValidation(model);
+      _validator?.createUpdateValidation(model);
       await _dao.create(model);
+    } on ValidationException catch (e) {
+      DialogUtil.showAlertDialog(e.toString());
+    }
+  }
+
+  Future<void> update(dynamic modelId, M model) async {
+    try {
+      _validator?.createUpdateValidation(model);
+      await _dao.update(modelId, model);
     } on ValidationException catch (e) {
       DialogUtil.showAlertDialog(e.toString());
     }
