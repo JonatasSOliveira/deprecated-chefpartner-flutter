@@ -2,6 +2,7 @@ import 'package:chefpartner_mobile/src/components/default_form_component.dart';
 import 'package:chefpartner_mobile/src/components/drawer_container.dart';
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/utils/dialog_util.dart';
 import 'package:flutter/material.dart';
 
 class DefaultListComponent<M extends GenericModel> extends StatefulWidget {
@@ -35,6 +36,10 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
   @override
   void initState() {
     super.initState();
+    _loadModels();
+  }
+
+  void _loadModels() {
     widget._controller.listAll().then((list) {
       setState(() {
         _modelsList = list;
@@ -51,6 +56,15 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
         arguments: DefaultFormArguments(model: model));
   }
 
+  void _openConfirmDeleteDialog(BuildContext context, GenericModel model) {
+    DialogUtil.showConfirmDialog(
+        'Realmente deseja excluir ${widget.getModelDisplayValue(model)}?',
+        () async {
+      await widget._controller.softDelete(model.getId());
+      _loadModels();
+    });
+  }
+
   Widget renderItemList(BuildContext context) {
     if (_modelsList.isNotEmpty) {
       return Expanded(
@@ -65,7 +79,8 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
                     ),
                     IconButton(
                       icon: const Icon(Icons.delete),
-                      onPressed: () => {},
+                      onPressed: () =>
+                          _openConfirmDeleteDialog(context, _modelsList[index]),
                     )
                   ]),
                   title: Text(

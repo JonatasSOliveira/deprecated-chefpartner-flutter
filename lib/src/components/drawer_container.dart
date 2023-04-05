@@ -29,6 +29,10 @@ class DrawerContainer extends StatelessWidget {
             child: null,
           ),
           ListTile(
+            title: const Text('Início'),
+            onTap: () => _navigateTo(context, '/'),
+          ),
+          ListTile(
             title: const Text('Clientes'),
             onTap: () => _navigateTo(context, '/customers'),
           ),

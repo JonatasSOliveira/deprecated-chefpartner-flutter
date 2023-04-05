@@ -35,4 +35,8 @@ abstract class GenericService<M extends GenericModel,
   Future<List<M>> listAll() async {
     return await _dao.listAll();
   }
+
+  Future<void> softDelete(dynamic modelId) async {
+    await _dao.softDelete(modelId);
+  }
 }
