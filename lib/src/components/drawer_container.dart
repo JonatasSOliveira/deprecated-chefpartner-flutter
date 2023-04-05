@@ -10,9 +10,8 @@ class DrawerContainer extends StatelessWidget {
     required this.child,
   }) : super(key: key);
 
-  void _navigateTo(BuildContext context, String routeName) {
+  void _navigateTo(BuildContext context, String routeName) => 
     Navigator.pushReplacementNamed(context, routeName);
-  }
 
   @override
   Widget build(BuildContext context) {

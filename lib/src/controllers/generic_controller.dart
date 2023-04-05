@@ -9,19 +9,16 @@ abstract class GenericController<M extends GenericModel,
 
   GenericController({required S service}) : _service = service;
 
-  Future<void> create(M model) async {
+  Future<void> create(M model) async =>
     await _service.create(model);
-  }
 
-  Future<void> update(dynamic modelId, M model) async {
+  Future<void> update(dynamic modelId, M model) async =>
     await _service.update(modelId, model);
-  }
 
-  Future<List<M>> listAll() async {
-    return await _service.listAll();
-  }
+  Future<List<M>> listAll() async =>
+    await _service.listAll();
 
-  Future<void> softDelete(dynamic modelId) async {
+  Future<void> softDelete(dynamic modelId) async =>
     await _service.softDelete(modelId);
-  }
+  
 }

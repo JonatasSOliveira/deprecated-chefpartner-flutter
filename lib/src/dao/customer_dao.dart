@@ -7,9 +7,8 @@ class CustomerDAO extends GenericDAO<CustomerDM, Customer> {
       : super(databaseModel: CustomerDM(), defaultInsertAttributes: ['name']);
 
   @override
-  List<Object?> getAttributesValues(Customer model) {
-    return [model.getName()];
-  }
+  List<Object?> getAttributesValues(Customer model) =>
+    [model.getName()];
 
   @override
   Customer fromMap(Map<String, dynamic> map) {

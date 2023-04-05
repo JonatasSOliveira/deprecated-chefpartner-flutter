@@ -4,7 +4,6 @@ class ValidationException implements Exception {
   ValidationException(message) : _message = message;
 
   @override
-  String toString() {
-    return _message;
-  }
+  String toString() => _message;
+  
 }

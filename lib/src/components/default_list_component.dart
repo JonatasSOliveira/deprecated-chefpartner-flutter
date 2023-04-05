@@ -40,29 +40,31 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
   }
 
   void _loadModels() {
-    widget._controller.listAll().then((list) {
-      setState(() {
-        _modelsList = list;
-      });
-    });
+    widget._controller.listAll().then((list) =>
+      setState(() => _modelsList = list)
+    );
   }
 
-  void _openModelCreateForm(BuildContext context) {
-    Navigator.pushNamed(context, widget.formRouteName);
+  void _openModelCreateForm(BuildContext context) async {
+    await Navigator.pushNamed(context, widget.formRouteName);
+    _loadModels();
   }
 
-  void _openModelEditForm(BuildContext context, GenericModel model) {
-    Navigator.pushNamed(context, widget.formRouteName,
+  void _openModelEditForm(BuildContext context, GenericModel model) async  {
+    await Navigator.pushNamed(context, widget.formRouteName,
         arguments: DefaultFormArguments(model: model));
+    _loadModels();
+  }
+
+  void _deleteModel(GenericModel model) async{
+    await widget._controller.softDelete(model.getId());
+    _loadModels();
   }
 
   void _openConfirmDeleteDialog(BuildContext context, GenericModel model) {
     DialogUtil.showConfirmDialog(
         'Realmente deseja excluir ${widget.getModelDisplayValue(model)}?',
-        () async {
-      await widget._controller.softDelete(model.getId());
-      _loadModels();
-    });
+        () => _deleteModel(model));
   }
 
   Widget renderItemList(BuildContext context) {

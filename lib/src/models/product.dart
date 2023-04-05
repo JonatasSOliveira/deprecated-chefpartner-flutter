@@ -19,7 +19,6 @@ class Product extends GenericModel {
     _name = map['name'];
   }
 
-  String getName() {
-    return _name;
-  }
+  String getName() => _name;
+  
 }

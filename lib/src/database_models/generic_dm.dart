@@ -43,12 +43,12 @@ abstract class GenericDM {
   })  : _tableName = tableName,
         _attributes = attributes;
 
-  String _getAtributesDefinitionScript() {
-    return _attributes
+  String _getAtributesDefinitionScript() =>
+    _attributes
         .map((attribute) =>
             ',${attribute.name} ${attribute.type.sqlType} ${!attribute.isNulable ? 'NOT ' : ''}NULL')
         .join('\n');
-  }
+  
 
   String _getForeignKeysDefinitionScript() {
     final fkAttributes =
@@ -61,12 +61,11 @@ abstract class GenericDM {
     return ',${fkAttributes.map((attribute) => 'FOREIGN KEY (${attribute.name}) REFERENCES ${attribute.foreignTable}(${attribute.foreignColumn})').join('\n')}';
   }
 
-  String getTableName() {
-    return _tableName;
-  }
+  String getTableName() =>
+    _tableName;
 
-  String getCreateTableScript() {
-    return '''
+  String getCreateTableScript() =>
+    '''
       CREATE TABLE IF NOT EXISTS $_tableName (
         id INTEGER PRIMARY KEY AUTOINCREMENT
         ${_getAtributesDefinitionScript()}
@@ -76,35 +75,31 @@ abstract class GenericDM {
         ${_getForeignKeysDefinitionScript()}
       );
     ''';
-  }
 
-  String getInsertScript(List<String> attributes) {
-    return '''
+  String getInsertScript(List<String> attributes) =>
+    '''
       INSERT INTO $_tableName (
         ${attributes.join(",")}
       ) VALUES (
         ${attributes.map((attribute) => '?').join(',')}
       );
     ''';
-  }
 
-  String getSelectAllScript() {
-    return 'SELECT * FROM $_tableName WHERE deleted_at IS NULL';
-  }
-
-  String getUpdateScript(List<String> attributes) {
-    return '''
+  String getSelectAllScript() =>
+    'SELECT * FROM $_tableName WHERE deleted_at IS NULL';
+  
+  String getUpdateScript(List<String> attributes) =>
+    '''
       UPDATE $_tableName
       SET ${attributes.map((attribute) => '$attribute = ?').join(',')}
       WHERE id = ?;
     ''';
-  }
 
-  String getSoftDeleteScript() {
-    return '''
+  String getSoftDeleteScript() =>
+    '''
       UPDATE $_tableName
       SET deleted_at = CURRENT_TIMESTAMP
       WHERE id = ?;
     ''';
-  }
+  
 }
