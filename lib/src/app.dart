@@ -1,4 +1,5 @@
 import 'package:chefpartner_mobile/src/global/navigator_key.dart';
+import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
 import 'package:chefpartner_mobile/src/routes/screen_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SQLiteDatabaseConnection.createDatabase();
+    AppStrings.defineStrings();
 
     return MaterialApp(
       title: 'Flutter Demo',

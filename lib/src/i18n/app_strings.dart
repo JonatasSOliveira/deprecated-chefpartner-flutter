@@ -1,17 +1,33 @@
 import 'dart:ui';
 
-import 'package:chefpartner_mobile/src/i18n/pt_BR/strings.dart';
 import 'package:chefpartner_mobile/src/i18n/en_US/strings.dart';
+import 'package:chefpartner_mobile/src/i18n/interfaces/strings_interface.dart';
+import 'package:chefpartner_mobile/src/i18n/pt_BR/strings.dart';
 
 class AppStrings {
-  static const Map<String, Map<String, Map<String, String>>> _localizedValues =
-      {...ptBrStrings, ...enUsStrings};
+  static StringsInterface _strings = EnUsStrings();
 
-  static String getString(String path, String label) {
+  static void defineStrings() {
     Locale currentLocale = window.locale;
     final String languageCountryCode =
         '${currentLocale.languageCode}_${currentLocale.countryCode}';
 
-    return '${_localizedValues[languageCountryCode]?[path]?[label]}';
+    _strings = _getStringsByLanguageCode(languageCountryCode);
   }
+
+  static StringsInterface _getStringsByLanguageCode(
+      String languageCountryCode) {
+    switch (languageCountryCode) {
+      case 'en_US':
+        return EnUsStrings();
+
+      case 'pt_BR':
+        return PtBrStrings();
+
+      default:
+        return EnUsStrings();
+    }
+  }
+
+  static StringsInterface get strings => _strings;
 }

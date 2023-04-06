@@ -1,6 +1,8 @@
-const Map<String, Map<String, String>> generalStrings = {
-  'general': {
-    'confirm_button_label': 'Confirmar',
-    'cancel_button_label': 'Cancelar'
-  }
-};
+import 'package:chefpartner_mobile/src/i18n/interfaces/general_strings_interface.dart';
+
+class PtBrGeneralStrings implements GeneralStringsInterface {
+  @override
+  String get confirm => 'Confirmar';
+  @override
+  String get cancel => 'Cancelar';
+}

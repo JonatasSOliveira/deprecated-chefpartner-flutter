@@ -1,4 +1,5 @@
 import 'package:chefpartner_mobile/src/global/navigator_key.dart';
+import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class DialogUtil {
@@ -34,14 +35,14 @@ class DialogUtil {
                 onPressed: () {
                   Navigator.pop(context, false);
                 },
-                child: const Text('Cancelar'),
+                child: Text(AppStrings.strings.general.cancel),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context, true);
                   onConfirm();
                 },
-                child: const Text('Confirmar'),
+                child: Text(AppStrings.strings.general.confirm),
               ),
             ],
           );
