@@ -5,4 +5,6 @@ class PtBrGeneralStrings implements GeneralStringsInterface {
   String get confirm => 'Confirmar';
   @override
   String get cancel => 'Cancelar';
+  @override
+  String get name => 'Nome';
 }

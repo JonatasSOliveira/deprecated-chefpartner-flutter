@@ -1,4 +1,5 @@
 import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
+import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/models/payment_method.dart';
@@ -55,8 +56,8 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
           Expanded(
               child: TextField(
             controller: _nameController,
-            decoration:
-                const InputDecoration(label: Text('Nome'), hintText: ''),
+            decoration: InputDecoration(
+                label: Text(AppStrings.strings.general.name), hintText: ''),
             onChanged: (value) => setState(() => _name = value),
           )),
         ])

@@ -5,4 +5,6 @@ class EnUsGeneralStrings implements GeneralStringsInterface {
   String get confirm => 'Confirm';
   @override
   String get cancel => 'Cancel';
+  @override
+  String get name => 'Name';
 }

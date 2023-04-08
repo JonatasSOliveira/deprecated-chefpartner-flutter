@@ -9,7 +9,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DrawerContainer(
-        title: AppStrings.getString('home', 'title'),
-        child: const Text('Home'));
+        title: AppStrings.strings.home.singularName, child: const Text('Home'));
   }
 }

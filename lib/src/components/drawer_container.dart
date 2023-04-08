@@ -1,3 +1,4 @@
+import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class DrawerContainer extends StatelessWidget {
@@ -10,8 +11,8 @@ class DrawerContainer extends StatelessWidget {
     required this.child,
   }) : super(key: key);
 
-  void _navigateTo(BuildContext context, String routeName) => 
-    Navigator.pushReplacementNamed(context, routeName);
+  void _navigateTo(BuildContext context, String routeName) =>
+      Navigator.pushReplacementNamed(context, routeName);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class DrawerContainer extends StatelessWidget {
             child: null,
           ),
           ListTile(
-            title: const Text('Início'),
+            title: Text(AppStrings.strings.home.singularName),
             onTap: () => _navigateTo(context, '/'),
           ),
           ListTile(
@@ -44,7 +45,7 @@ class DrawerContainer extends StatelessWidget {
             onTap: () => _navigateTo(context, '/products'),
           ),
           ListTile(
-            title: const Text('Formas de Pagamentos'),
+            title: Text(AppStrings.strings.paymentMethod.pluralName),
             onTap: () => _navigateTo(context, '/payment_methods'),
           )
         ]),
