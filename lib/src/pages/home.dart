@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/components/drawer_container.dart';
@@ -9,6 +9,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DrawerContainer(
-        title: AppStrings.strings.home.singularName, child: const Text('Home'));
+        title: I18n.strings.home.singularName, child: const Text('Home'));
   }
 }

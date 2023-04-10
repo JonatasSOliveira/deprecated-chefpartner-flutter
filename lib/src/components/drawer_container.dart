@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 
 class DrawerContainer extends StatelessWidget {
@@ -29,7 +29,7 @@ class DrawerContainer extends StatelessWidget {
             child: null,
           ),
           ListTile(
-            title: Text(AppStrings.strings.home.singularName),
+            title: Text(I18n.strings.home.singularName),
             onTap: () => _navigateTo(context, '/'),
           ),
           ListTile(
@@ -41,11 +41,11 @@ class DrawerContainer extends StatelessWidget {
             onTap: () => _navigateTo(context, '/orders'),
           ),
           ListTile(
-            title: const Text('Produtos'),
+            title: Text(I18n.strings.product.pluralName),
             onTap: () => _navigateTo(context, '/products'),
           ),
           ListTile(
-            title: Text(AppStrings.strings.paymentMethod.pluralName),
+            title: Text(I18n.strings.paymentMethod.pluralName),
             onTap: () => _navigateTo(context, '/payment_methods'),
           )
         ]),

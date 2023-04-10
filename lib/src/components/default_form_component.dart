@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 import 'package:flutter/material.dart';
 
@@ -55,10 +55,10 @@ class DefaultFormComponent extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           onPressed: () => _cancelForm(context),
-                          child: Text(AppStrings.strings.general.cancel)),
+                          child: Text(I18n.strings.general.cancel)),
                       ElevatedButton(
                           onPressed: () => _confirmForm(context),
-                          child: Text(AppStrings.strings.general.confirm)),
+                          child: Text(I18n.strings.general.confirm)),
                     ],
                   ),
                 ]))));

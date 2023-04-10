@@ -3,4 +3,5 @@ abstract class GeneralStringsInterface {
   String get cancel;
   String get name;
   String get description;
+  String get price;
 }

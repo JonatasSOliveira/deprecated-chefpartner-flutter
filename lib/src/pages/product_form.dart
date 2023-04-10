@@ -1,8 +1,9 @@
+import 'package:chefpartner_mobile/src/components/currency_input_component.dart';
 import 'package:chefpartner_mobile/src/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/components/default_form_component.dart';
-import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/models/product.dart';
 
 class ProductForm extends StatefulWidget {
@@ -59,7 +60,7 @@ class _ProductFormState extends State<ProductForm> {
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
-        title: AppStrings.strings.product.formTitle,
+        title: I18n.strings.product.formTitle,
         onConfirm: _saveProductForm,
         children: [
           Row(children: [
@@ -67,21 +68,36 @@ class _ProductFormState extends State<ProductForm> {
                 child: TextField(
               controller: _nameController,
               decoration: InputDecoration(
-                label: Text(AppStrings.strings.general.name),
+                label: Text(I18n.strings.general.name),
                 hintText: '',
               ),
               onChanged: (value) => setState(() => _name = value),
             )),
+          ]),
+          Row(children: [
             Expanded(
                 child: TextField(
               controller: _descriptionController,
               decoration: InputDecoration(
-                label: Text(AppStrings.strings.general.description),
+                label: Text(I18n.strings.general.description),
                 hintText: '',
               ),
               onChanged: (value) => setState(() => _description = value),
-            ))
-          ])
+            )),
+          ]),
+          Row(
+            children: [
+              Expanded(
+                  child: CurrencyInputComponent(
+                controller: _priceController,
+                decoration: InputDecoration(
+                  label: Text(I18n.strings.general.price),
+                  hintText: '',
+                ),
+                onChanged: (value) => setState(() => _price = int.parse(value)),
+              ))
+            ],
+          )
         ]);
   }
 }

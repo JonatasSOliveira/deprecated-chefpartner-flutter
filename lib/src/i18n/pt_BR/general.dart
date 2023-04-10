@@ -9,4 +9,6 @@ class PtBrGeneralStrings implements GeneralStringsInterface {
   String get name => 'Nome';
   @override
   String get description => 'Descrição';
+  @override
+  String get price => 'Preço';
 }

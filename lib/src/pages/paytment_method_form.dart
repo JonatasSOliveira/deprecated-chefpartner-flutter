@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
-import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/models/payment_method.dart';
 import 'package:chefpartner_mobile/src/components/default_form_component.dart';
 
@@ -50,7 +50,7 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
-      title: AppStrings.strings.paymentMethod.formTitle,
+      title: I18n.strings.paymentMethod.formTitle,
       onConfirm: _savePaymentMethod,
       children: [
         Row(children: [
@@ -58,7 +58,7 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
               child: TextField(
             controller: _nameController,
             decoration: InputDecoration(
-                label: Text(AppStrings.strings.general.name), hintText: ''),
+                label: Text(I18n.strings.general.name), hintText: ''),
             onChanged: (value) => setState(() => _name = value),
           )),
         ])
