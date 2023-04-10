@@ -3,7 +3,7 @@ import 'package:chefpartner_mobile/src/models/generic_model.dart';
 class Product extends GenericModel {
   String _name = '';
   String? description;
-  int? price;
+  int price = 0;
 
   Product({
     super.id,
@@ -20,5 +20,8 @@ class Product extends GenericModel {
   }
 
   String getName() => _name;
-  
+
+  String getDescription() => description ?? '';
+
+  int getPrice() => price;
 }

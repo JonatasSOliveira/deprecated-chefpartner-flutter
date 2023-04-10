@@ -7,4 +7,6 @@ class EnUsGeneralStrings implements GeneralStringsInterface {
   String get cancel => 'Cancel';
   @override
   String get name => 'Name';
+  @override
+  String get description => 'Description';
 }

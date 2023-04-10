@@ -5,4 +5,6 @@ class EnUsPaymentMethodStrings implements PaymentMethodStringsInterface {
   String get pluralName => 'Payment methods';
   @override
   String get newPaymentMethod => 'New payment method';
+  @override
+  String get formTitle => 'Payment method form';
 }

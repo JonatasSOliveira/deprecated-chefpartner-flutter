@@ -7,4 +7,6 @@ class PtBrGeneralStrings implements GeneralStringsInterface {
   String get cancel => 'Cancelar';
   @override
   String get name => 'Nome';
+  @override
+  String get description => 'Descrição';
 }

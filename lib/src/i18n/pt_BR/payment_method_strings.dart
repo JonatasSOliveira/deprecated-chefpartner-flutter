@@ -5,4 +5,6 @@ class PtBrPaymentMethodStrings implements PaymentMethodStringsInterface {
   String get pluralName => 'Formas de Pagamento';
   @override
   String get newPaymentMethod => 'Nova Forma de Pagamento';
+  @override
+  String get formTitle => 'Formulário Forma de Pagamento';
 }

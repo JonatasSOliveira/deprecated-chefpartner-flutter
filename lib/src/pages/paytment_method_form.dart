@@ -1,7 +1,7 @@
-import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
-import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
 import 'package:flutter/material.dart';
 
+import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
+import 'package:chefpartner_mobile/src/i18n/app_strings.dart';
 import 'package:chefpartner_mobile/src/models/payment_method.dart';
 import 'package:chefpartner_mobile/src/components/default_form_component.dart';
 
@@ -15,6 +15,7 @@ class PaymentMethodForm extends StatefulWidget {
 class _PaymentMethodFormState extends State<PaymentMethodForm> {
   dynamic _id;
   String _name = '';
+
   final TextEditingController _nameController = TextEditingController();
 
   @override
@@ -35,7 +36,7 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
     });
   }
 
-  void _onConfirm() async {
+  Future<void> _savePaymentMethod() async {
     final paymentMethod = PaymentMethod(name: _name);
 
     if (_id != null) {
@@ -49,8 +50,8 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
-      title: 'Formulário Forma de Pagamento',
-      onConfirm: _onConfirm,
+      title: AppStrings.strings.paymentMethod.formTitle,
+      onConfirm: _savePaymentMethod,
       children: [
         Row(children: [
           Expanded(
