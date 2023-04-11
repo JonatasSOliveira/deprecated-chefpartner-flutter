@@ -1,9 +1,9 @@
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 
-class PaymentMethod extends GenericModel {
+class PaymentMethodDTO extends GenericDTO {
   String _name = '';
 
-  PaymentMethod({
+  PaymentMethodDTO({
     super.id,
     required String name,
     super.createdAt,
@@ -11,7 +11,7 @@ class PaymentMethod extends GenericModel {
     super.deletedAt,
   }) : _name = name;
 
-  PaymentMethod.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+  PaymentMethodDTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
     _name = map['name'];
   }
 

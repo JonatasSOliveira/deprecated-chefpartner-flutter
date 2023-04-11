@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/i18n/interfaces/home_strings_interface.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/home_strings_interface.dart';
 
 class PtBrHomeStrings implements HomeStringsInterface {
   @override

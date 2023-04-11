@@ -1,11 +1,11 @@
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 
-class Product extends GenericModel {
+class ProductDTO extends GenericDTO {
   String _name = '';
   String? description;
   int price = 0;
 
-  Product({
+  ProductDTO({
     super.id,
     required String name,
     required this.price,
@@ -15,7 +15,7 @@ class Product extends GenericModel {
     super.deletedAt,
   }) : _name = name;
 
-  Product.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+  ProductDTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
     _name = map['name'];
   }
 

@@ -2,7 +2,7 @@ import 'package:chefpartner_mobile/src/global/navigator_key.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 
-class DialogUtil {
+class GenericDialog {
   static void showAlertDialog(String text) {
     showDialog(
       barrierDismissible: false,

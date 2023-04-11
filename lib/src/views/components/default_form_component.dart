@@ -1,15 +1,15 @@
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:flutter/material.dart';
 
 class DefaultFormArguments {
-  final GenericModel model;
+  final GenericDTO model;
 
   const DefaultFormArguments({
     required this.model,
   });
 
-  static GenericModel? getEditModel(BuildContext context) {
+  static GenericDTO? getEditModel(BuildContext context) {
     final arguments =
         ModalRoute.of(context)?.settings.arguments as DefaultFormArguments?;
 

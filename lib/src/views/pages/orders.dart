@@ -1,7 +1,7 @@
 import 'package:chefpartner_mobile/src/controllers/order_controller.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chefpartner_mobile/src/components/default_list_component.dart';
+import 'package:chefpartner_mobile/src/views/components/default_list_component.dart';
 
 class Orders extends StatelessWidget {
   const Orders({super.key});

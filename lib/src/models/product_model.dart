@@ -1,7 +1,7 @@
-import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
-class ProductDM extends GenericDM {
-  ProductDM()
+class ProductModel extends GenericModel {
+  ProductModel()
       : super(
           tableName: 'product',
           attributes: [

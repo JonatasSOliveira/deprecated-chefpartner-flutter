@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/i18n/interfaces/general_strings_interface.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/general_strings_interface.dart';
 
 class PtBrGeneralStrings implements GeneralStringsInterface {
   @override

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
-import 'package:chefpartner_mobile/src/models/payment_method.dart';
-import 'package:chefpartner_mobile/src/components/default_form_component.dart';
+import 'package:chefpartner_mobile/src/dtos/payment_method_dto.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form_component.dart';
 
 class PaymentMethodForm extends StatefulWidget {
   const PaymentMethodForm({super.key});
@@ -21,14 +21,14 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    PaymentMethod? paymentMethod =
-        DefaultFormArguments.getEditModel(context) as PaymentMethod?;
+    PaymentMethodDTO? paymentMethod =
+        DefaultFormArguments.getEditModel(context) as PaymentMethodDTO?;
     if (paymentMethod != null) {
       _initializeEdition(paymentMethod);
     }
   }
 
-  void _initializeEdition(PaymentMethod paymentMethod) {
+  void _initializeEdition(PaymentMethodDTO paymentMethod) {
     _nameController.text = paymentMethod.getName();
     setState(() {
       _id = paymentMethod.getId();
@@ -37,7 +37,7 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
   }
 
   Future<void> _savePaymentMethod() async {
-    final paymentMethod = PaymentMethod(name: _name);
+    final paymentMethod = PaymentMethodDTO(name: _name);
 
     if (_id != null) {
       await PaymentMethodController().update(_id, paymentMethod);

@@ -1,20 +1,21 @@
 import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpartner_mobile/src/database_models/payment_method_dm.dart';
-import 'package:chefpartner_mobile/src/models/payment_method.dart';
+import 'package:chefpartner_mobile/src/models/payment_method_model.dart';
+import 'package:chefpartner_mobile/src/dtos/payment_method_dto.dart';
 
-class PaymentMethodDAO extends GenericDAO<PaymentMethodDM, PaymentMethod> {
+class PaymentMethodDAO
+    extends GenericDAO<PaymentMethodModel, PaymentMethodDTO> {
   PaymentMethodDAO()
       : super(
-            databaseModel: PaymentMethodDM(),
+            databaseModel: PaymentMethodModel(),
             defaultInsertAttributes: ['name']);
 
   @override
-  List<Object?> getAttributesValues(PaymentMethod model) {
+  List<Object?> getAttributesValues(PaymentMethodDTO model) {
     return [model.getName()];
   }
 
   @override
-  PaymentMethod fromMap(Map<String, dynamic> map) {
-    return PaymentMethod.fromMap(map);
+  PaymentMethodDTO fromMap(Map<String, dynamic> map) {
+    return PaymentMethodDTO.fromMap(map);
   }
 }

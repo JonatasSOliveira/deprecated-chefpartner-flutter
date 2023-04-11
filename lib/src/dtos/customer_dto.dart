@@ -1,10 +1,10 @@
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 
-class Customer extends GenericModel {
+class CustomerDTO extends GenericDTO {
   String _name = '';
   String? federalDocument;
 
-  Customer({
+  CustomerDTO({
     super.id,
     required String name,
     required this.federalDocument,
@@ -13,7 +13,7 @@ class Customer extends GenericModel {
     super.deletedAt,
   }) : _name = name;
 
-  Customer.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+  CustomerDTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
     _name = map['name'];
   }
 

@@ -1,14 +1,14 @@
-import 'package:chefpartner_mobile/src/database_models/customer_dm.dart';
-import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
+import 'package:chefpartner_mobile/src/models/customer_model.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
-class CustomerAddressDM extends GenericDM {
-  CustomerAddressDM()
+class CustomerAddressModel extends GenericModel {
+  CustomerAddressModel()
       : super(tableName: 'customer_address', attributes: [
           Attribute(
               name: 'customer_id',
               type: AttributeType.integer,
               isForeignKey: true,
-              foreignTable: CustomerDM().getTableName()),
+              foreignTable: CustomerModel().getTableName()),
           Attribute(name: 'address', type: AttributeType.text),
           Attribute(name: 'city', type: AttributeType.text),
           Attribute(name: 'state', type: AttributeType.text),

@@ -1,16 +1,16 @@
 import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
-import 'package:chefpartner_mobile/src/exceptions/validation_exception.dart';
-import 'package:chefpartner_mobile/src/interfaces/validator_interface.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
-import 'package:chefpartner_mobile/src/utils/dialog_util.dart';
+import 'package:chefpartner_mobile/src/exceptions/validation_exception.dart';
+import 'package:chefpartner_mobile/src/interfaces/default_validator_interface.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
+import 'package:chefpartner_mobile/src/views/dialogs/generic_dialog.dart';
 
-abstract class GenericService<M extends GenericModel,
-    DAO extends GenericDAO<GenericDM, M>> {
+abstract class GenericService<M extends GenericDTO,
+    DAO extends GenericDAO<GenericModel, M>> {
   final DAO _dao;
-  final ValidatorInterface<M>? _validator;
+  final DefaultValidatorInterface<M>? _validator;
 
-  GenericService({required DAO dao, ValidatorInterface<M>? validator})
+  GenericService({required DAO dao, DefaultValidatorInterface<M>? validator})
       : _dao = dao,
         _validator = validator;
 
@@ -19,7 +19,7 @@ abstract class GenericService<M extends GenericModel,
       _validator?.createUpdateValidation(model);
       await _dao.create(model);
     } on ValidationException catch (e) {
-      DialogUtil.showAlertDialog(e.toString());
+      GenericDialog.showAlertDialog(e.toString());
     }
   }
 
@@ -28,14 +28,12 @@ abstract class GenericService<M extends GenericModel,
       _validator?.createUpdateValidation(model);
       await _dao.update(modelId, model);
     } on ValidationException catch (e) {
-      DialogUtil.showAlertDialog(e.toString());
+      GenericDialog.showAlertDialog(e.toString());
     }
   }
 
-  Future<List<M>> listAll() async =>
-    await _dao.listAll();
+  Future<List<M>> listAll() async => await _dao.listAll();
 
   Future<void> softDelete(dynamic modelId) async =>
-    await _dao.softDelete(modelId);
-  
+      await _dao.softDelete(modelId);
 }

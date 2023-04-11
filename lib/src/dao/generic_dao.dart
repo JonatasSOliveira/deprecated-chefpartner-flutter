@@ -1,8 +1,8 @@
 import 'package:chefpartner_mobile/src/database/sqlite_database_connection.dart';
-import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 
-abstract class GenericDAO<DM extends GenericDM, M extends GenericModel> {
+abstract class GenericDAO<DM extends GenericModel, M extends GenericDTO> {
   final DM _databaseModel;
   final List<String> _defaultInsertAttributes;
 

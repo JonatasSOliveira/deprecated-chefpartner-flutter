@@ -1,11 +1,11 @@
-import 'package:chefpartner_mobile/src/components/default_form_component.dart';
-import 'package:chefpartner_mobile/src/components/drawer_container.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form_component.dart';
+import 'package:chefpartner_mobile/src/views/components/drawer_container.dart';
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
-import 'package:chefpartner_mobile/src/utils/dialog_util.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
+import 'package:chefpartner_mobile/src/views/dialogs/generic_dialog.dart';
 import 'package:flutter/material.dart';
 
-class DefaultListComponent<M extends GenericModel> extends StatefulWidget {
+class DefaultListComponent<M extends GenericDTO> extends StatefulWidget {
   final String title;
   final String buttonText;
   final String formRouteName;
@@ -26,12 +26,12 @@ class DefaultListComponent<M extends GenericModel> extends StatefulWidget {
   @override
   State<DefaultListComponent> createState() => _DefaultListComponentState();
 
-  String getModelDisplayValue(GenericModel model) =>
+  String getModelDisplayValue(GenericDTO model) =>
       _getModelDisplayValue(model as M);
 }
 
 class _DefaultListComponentState extends State<DefaultListComponent> {
-  List<GenericModel> _modelsList = [];
+  List<GenericDTO> _modelsList = [];
 
   @override
   void initState() {
@@ -40,9 +40,9 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
   }
 
   void _loadModels() {
-    widget._controller.listAll().then((list) =>
-      setState(() => _modelsList = list)
-    );
+    widget._controller
+        .listAll()
+        .then((list) => setState(() => _modelsList = list));
   }
 
   void _openModelCreateForm(BuildContext context) async {
@@ -50,19 +50,19 @@ class _DefaultListComponentState extends State<DefaultListComponent> {
     _loadModels();
   }
 
-  void _openModelEditForm(BuildContext context, GenericModel model) async  {
+  void _openModelEditForm(BuildContext context, GenericDTO model) async {
     await Navigator.pushNamed(context, widget.formRouteName,
         arguments: DefaultFormArguments(model: model));
     _loadModels();
   }
 
-  void _deleteModel(GenericModel model) async{
+  void _deleteModel(GenericDTO model) async {
     await widget._controller.softDelete(model.getId());
     _loadModels();
   }
 
-  void _openConfirmDeleteDialog(BuildContext context, GenericModel model) {
-    DialogUtil.showConfirmDialog(
+  void _openConfirmDeleteDialog(BuildContext context, GenericDTO model) {
+    GenericDialog.showConfirmDialog(
         'Realmente deseja excluir ${widget.getModelDisplayValue(model)}?',
         () => _deleteModel(model));
   }

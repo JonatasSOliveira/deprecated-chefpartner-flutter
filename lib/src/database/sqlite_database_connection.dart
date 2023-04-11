@@ -1,19 +1,19 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:chefpartner_mobile/src/database_models/customer_address_dm.dart';
-import 'package:chefpartner_mobile/src/database_models/product_dm.dart';
-import 'package:chefpartner_mobile/src/database_models/customer_dm.dart';
-import 'package:chefpartner_mobile/src/database_models/payment_method_dm.dart';
+import 'package:chefpartner_mobile/src/models/customer_address_model.dart';
+import 'package:chefpartner_mobile/src/models/product_model.dart';
+import 'package:chefpartner_mobile/src/models/customer_model.dart';
+import 'package:chefpartner_mobile/src/models/payment_method_model.dart';
 
 class SQLiteDatabaseConnection {
   static Database? _db;
 
   static void _syncTables(Database db) {
-    db.execute(PaymentMethodDM().getCreateTableScript());
-    db.execute(ProductDM().getCreateTableScript());
-    db.execute(CustomerDM().getCreateTableScript());
-    db.execute(CustomerAddressDM().getCreateTableScript());
+    db.execute(PaymentMethodModel().getCreateTableScript());
+    db.execute(ProductModel().getCreateTableScript());
+    db.execute(CustomerModel().getCreateTableScript());
+    db.execute(CustomerAddressModel().getCreateTableScript());
   }
 
   static Future<void> createDatabase() async {

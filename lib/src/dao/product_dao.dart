@@ -1,18 +1,18 @@
 import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpartner_mobile/src/database_models/product_dm.dart';
-import 'package:chefpartner_mobile/src/models/product.dart';
+import 'package:chefpartner_mobile/src/models/product_model.dart';
+import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
 
-class ProductDAO extends GenericDAO<ProductDM, Product> {
+class ProductDAO extends GenericDAO<ProductModel, ProductDTO> {
   ProductDAO()
-      : super(databaseModel: ProductDM(), defaultInsertAttributes: ['name']);
+      : super(databaseModel: ProductModel(), defaultInsertAttributes: ['name']);
 
   @override
-  List<Object?> getAttributesValues(Product model) {
+  List<Object?> getAttributesValues(ProductDTO model) {
     return [model.getName()];
   }
 
   @override
-  Product fromMap(Map<String, dynamic> map) {
-    return Product.fromMap(map);
+  ProductDTO fromMap(Map<String, dynamic> map) {
+    return ProductDTO.fromMap(map);
   }
 }

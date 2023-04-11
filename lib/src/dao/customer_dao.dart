@@ -1,17 +1,17 @@
 import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpartner_mobile/src/database_models/customer_dm.dart';
-import 'package:chefpartner_mobile/src/models/customer.dart';
+import 'package:chefpartner_mobile/src/models/customer_model.dart';
+import 'package:chefpartner_mobile/src/dtos/customer_dto.dart';
 
-class CustomerDAO extends GenericDAO<CustomerDM, Customer> {
+class CustomerDAO extends GenericDAO<CustomerModel, CustomerDTO> {
   CustomerDAO()
-      : super(databaseModel: CustomerDM(), defaultInsertAttributes: ['name']);
+      : super(
+            databaseModel: CustomerModel(), defaultInsertAttributes: ['name']);
 
   @override
-  List<Object?> getAttributesValues(Customer model) =>
-    [model.getName()];
+  List<Object?> getAttributesValues(CustomerDTO model) => [model.getName()];
 
   @override
-  Customer fromMap(Map<String, dynamic> map) {
-    return Customer.fromMap(map);
+  CustomerDTO fromMap(Map<String, dynamic> map) {
+    return CustomerDTO.fromMap(map);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chefpartner_mobile/src/components/drawer_container.dart';
+import 'package:chefpartner_mobile/src/views/components/drawer_container.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

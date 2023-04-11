@@ -1,8 +1,8 @@
-import 'package:chefpartner_mobile/src/models/customer.dart';
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/dtos/customer_dto.dart';
+import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 
-class CustomerAddress extends GenericModel {
-  Customer? customer;
+class CustomerAddressDTO extends GenericDTO {
+  CustomerDTO? customer;
   String? address;
   String? city;
   String? state;
@@ -10,7 +10,7 @@ class CustomerAddress extends GenericModel {
   String? complement;
   String? referencePoint;
 
-  CustomerAddress({
+  CustomerAddressDTO({
     super.id,
     required this.customer,
     required this.address,
@@ -24,8 +24,8 @@ class CustomerAddress extends GenericModel {
     super.deletedAt,
   });
 
-  CustomerAddress.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+  CustomerAddressDTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
     customer =
-        map['customer'] != null ? Customer.fromMap(map['customer']) : null;
+        map['customer'] != null ? CustomerDTO.fromMap(map['customer']) : null;
   }
 }

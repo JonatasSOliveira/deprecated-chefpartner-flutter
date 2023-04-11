@@ -1,7 +1,7 @@
-import 'package:chefpartner_mobile/src/database_models/generic_dm.dart';
+import 'package:chefpartner_mobile/src/models/generic_model.dart';
 
-class PaymentMethodDM extends GenericDM {
-  PaymentMethodDM()
+class PaymentMethodModel extends GenericModel {
+  PaymentMethodModel()
       : super(
           tableName: 'payment_method',
           attributes: [

@@ -1,10 +1,10 @@
-import 'package:chefpartner_mobile/src/components/currency_input_component.dart';
+import 'package:chefpartner_mobile/src/views/components/currency_input_component.dart';
 import 'package:chefpartner_mobile/src/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chefpartner_mobile/src/components/default_form_component.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form_component.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
-import 'package:chefpartner_mobile/src/models/product.dart';
+import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
 
 class ProductForm extends StatefulWidget {
   const ProductForm({super.key});
@@ -26,14 +26,15 @@ class _ProductFormState extends State<ProductForm> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    Product? product = DefaultFormArguments.getEditModel(context) as Product?;
+    ProductDTO? product =
+        DefaultFormArguments.getEditModel(context) as ProductDTO?;
 
     if (product != null) {
       _initializeEdition(product);
     }
   }
 
-  void _initializeEdition(Product product) {
+  void _initializeEdition(ProductDTO product) {
     _nameController.text = product.getName();
     _descriptionController.text = product.getDescription();
     _priceController.text = product.getPrice().toString();
@@ -47,7 +48,7 @@ class _ProductFormState extends State<ProductForm> {
 
   Future<void> _saveProductForm() async {
     final product =
-        Product(name: _name, description: _description, price: _price);
+        ProductDTO(name: _name, description: _description, price: _price);
 
     if (_id != null) {
       await ProductController().update(_id, product);

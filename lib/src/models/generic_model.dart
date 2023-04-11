@@ -1,32 +1,97 @@
+enum AttributeType {
+  integer('INTEGER'),
+  text('TEXT'),
+  blob('BLOB'),
+  real('REAL'),
+  double('DOUBLE'),
+  boolean('BOOLEAN'),
+  date('DATE'),
+  time('TIME'),
+  datetime('DATETIME'),
+  timestamp('TIMESTAMP');
+
+  final String type;
+  const AttributeType(this.type);
+
+  get sqlType => type;
+}
+
+class Attribute {
+  final String name;
+  final AttributeType type;
+  final bool isNulable;
+  final bool isForeignKey;
+  final String? foreignTable;
+  final String? foreignColumn;
+
+  Attribute(
+      {required this.name,
+      required this.type,
+      this.isNulable = false,
+      this.isForeignKey = false,
+      this.foreignTable,
+      this.foreignColumn = 'id'});
+}
+
 abstract class GenericModel {
-  dynamic _id;
-  DateTime? _createdAt;
-  DateTime? _updatedAt;
-  DateTime? _deletedAt;
+  final String _tableName;
+  final List<Attribute> _attributes;
 
   GenericModel({
-    dynamic id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-    DateTime? deletedAt,
-  })  : _id = id,
-        _createdAt = createdAt,
-        _updatedAt = updatedAt,
-        _deletedAt = deletedAt;
+    required String tableName,
+    required List<Attribute> attributes,
+  })  : _tableName = tableName,
+        _attributes = attributes;
 
-  GenericModel.fromMap(Map<String, dynamic> map) {
-    _id = map['id'];
-    _createdAt = DateTime.parse(map['created_at']);
-    _updatedAt = DateTime.parse(map['updated_at']);
-    _deletedAt =
-        map['deleted_at'] != null ? DateTime.parse(map['deleted_at']) : null;
+  String _getAtributesDefinitionScript() => _attributes
+      .map((attribute) =>
+          ',${attribute.name} ${attribute.type.sqlType} ${!attribute.isNulable ? 'NOT ' : ''}NULL')
+      .join('\n');
+
+  String _getForeignKeysDefinitionScript() {
+    final fkAttributes =
+        _attributes.where((attribute) => attribute.isForeignKey);
+
+    if (fkAttributes.isEmpty) {
+      return '';
+    }
+
+    return ',${fkAttributes.map((attribute) => 'FOREIGN KEY (${attribute.name}) REFERENCES ${attribute.foreignTable}(${attribute.foreignColumn})').join('\n')}';
   }
 
-  dynamic getId() => _id;
+  String getTableName() => _tableName;
 
-  DateTime? getCreatedAt() => _createdAt;
+  String getCreateTableScript() => '''
+      CREATE TABLE IF NOT EXISTS $_tableName (
+        id INTEGER PRIMARY KEY AUTOINCREMENT
+        ${_getAtributesDefinitionScript()}
+        ,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ,updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ,deleted_at TIMESTAMP
+        ${_getForeignKeysDefinitionScript()}
+      );
+    ''';
 
-  DateTime? getUpdatedAt() => _updatedAt;
+  String getInsertScript(List<String> attributes) => '''
+      INSERT INTO $_tableName (
+        ${attributes.join(",")}
+      ) VALUES (
+        ${attributes.map((attribute) => '?').join(',')}
+      );
+    ''';
 
-  DateTime? getDeletedAt() => _deletedAt;
+  String getSelectAllScript() =>
+      'SELECT * FROM $_tableName WHERE deleted_at IS NULL';
+
+  String getUpdateScript(List<String> attributes) => '''
+      UPDATE $_tableName
+      SET ${attributes.map((attribute) => '$attribute = ?').join(',')}
+      WHERE id = ?;
+    ''';
+
+  String getSoftDeleteScript() => '''
+      UPDATE $_tableName
+      SET deleted_at = CURRENT_TIMESTAMP
+      WHERE id = ?;
+    ''';
 }

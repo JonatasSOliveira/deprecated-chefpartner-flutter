@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:chefpartner_mobile/src/i18n/en_US/strings.dart';
-import 'package:chefpartner_mobile/src/i18n/interfaces/strings_interface.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/strings_interface.dart';
 import 'package:chefpartner_mobile/src/i18n/pt_BR/strings.dart';
 
 class I18n {
