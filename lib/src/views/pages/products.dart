@@ -12,7 +12,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultListComponent<ProductDTO>(
         title: I18n.strings.product.pluralName,
-        buttonText: I18n.strings.product.newProduct,
+        buttonText: I18n.strings.product.newRegister,
         formRouteName: '/product_form',
         controller: ProductController(),
         getModelDisplayValue: (product) => product.getName());

@@ -4,7 +4,9 @@ class PtBrProductStrings implements ProductStringsInterface {
   @override
   String get pluralName => 'Produtos';
   @override
-  String get newProduct => 'Novo Produto';
+  String get newRegister => 'Novo Produto';
   @override
   String get formTitle => 'Formulário Produto';
+  @override
+  String get singularName => 'Produto';
 }

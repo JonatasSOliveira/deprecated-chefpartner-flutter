@@ -4,7 +4,9 @@ class EnUsProductStrings implements ProductStringsInterface {
   @override
   String get pluralName => 'Products';
   @override
-  String get newProduct => 'New product';
+  String get newRegister => 'New product';
   @override
   String get formTitle => 'Product form';
+  @override
+  String get singularName => 'Product';
 }

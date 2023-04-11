@@ -12,7 +12,7 @@ class PaymentMethods extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultListComponent<PaymentMethodDTO>(
         title: I18n.strings.paymentMethod.pluralName,
-        buttonText: I18n.strings.paymentMethod.newPaymentMethod,
+        buttonText: I18n.strings.paymentMethod.newRegister,
         formRouteName: '/payment_method_form',
         controller: PaymentMethodController(),
         getModelDisplayValue: (paymentMethod) => paymentMethod.getName());
