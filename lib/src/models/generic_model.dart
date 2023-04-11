@@ -10,10 +10,10 @@ enum AttributeType {
   datetime('DATETIME'),
   timestamp('TIMESTAMP');
 
-  final String type;
-  const AttributeType(this.type);
+  final String _type;
+  const AttributeType(this._type);
 
-  get sqlType => type;
+  get sqlType => _type;
 }
 
 class Attribute {

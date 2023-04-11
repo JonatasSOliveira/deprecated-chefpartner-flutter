@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SQLiteDatabaseConnection.createDatabase();
-    I18n.defineStrings();
+    I18n.defineI18nAttributes();
 
     return MaterialApp(
       title: 'Flutter Demo',

@@ -1,49 +1,37 @@
 import 'dart:ui';
 
+import 'package:chefpartner_mobile/src/i18n/currency_patterns.dart';
 import 'package:chefpartner_mobile/src/i18n/en_US/strings.dart';
+import 'package:chefpartner_mobile/src/i18n/locales.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings_interface.dart';
 import 'package:chefpartner_mobile/src/i18n/pt_BR/strings.dart';
 
 class I18n {
   static StringsInterface _strings = EnUsStrings();
-  static String _currentLocale = 'en_US';
-  static String _currencyPattern = '#,##0.00';
+  static Locales _currentLocale = Locales.enUs;
+  static CurrencyPatterns _currencyPattern = CurrencyPatterns.enUs;
 
-  static void defineStrings() {
+  static void defineI18nAttributes() {
     Locale locale = window.locale;
-    _currentLocale = '${locale.languageCode}_${locale.countryCode}';
-    _strings = _getStringsByLanguageCode(_currentLocale);
+    _currentLocale = Locales.fromLocaleString(
+        '${locale.languageCode}_${locale.countryCode}');
+    _strings = _getLanguageStrings(_currentLocale);
+    _currencyPattern = CurrencyPatterns.fromLocale(_currentLocale);
   }
 
-  static StringsInterface _getStringsByLanguageCode(String currentLocale) {
+  static StringsInterface _getLanguageStrings(Locales currentLocale) {
     switch (currentLocale) {
-      case 'en_US':
+      case Locales.enUs:
         return EnUsStrings();
 
-      case 'pt_BR':
+      case Locales.ptBr:
         return PtBrStrings();
-
-      default:
-        return EnUsStrings();
-    }
-  }
-
-  static String _getCurrencyPattern(String currentLocale) {
-    switch (currentLocale) {
-      case 'en_US':
-        return '#,##0.00';
-
-      case 'pt_BR':
-        return '#.##0,00';
-
-      default:
-        return '#,##0.00';
     }
   }
 
   static StringsInterface get strings => _strings;
 
-  static String get currentLocale => _currentLocale;
+  static Locales get currentLocale => _currentLocale;
 
-  static String get currencyPattern => _currencyPattern;
+  static CurrencyPatterns get currencyPattern => _currencyPattern;
 }

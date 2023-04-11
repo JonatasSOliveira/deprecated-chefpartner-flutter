@@ -22,8 +22,8 @@ class CurrencyInputComponent extends StatefulWidget {
 }
 
 class _CurrencyInputComponentState extends State<CurrencyInputComponent> {
-  final NumberFormat _currencyFormat =
-      NumberFormat(I18n.currencyPattern, I18n.currentLocale);
+  final NumberFormat _currencyFormat = NumberFormat(
+      I18n.currencyPattern.getPattern(), I18n.currentLocale.getLocaleString());
 
   @override
   Widget build(BuildContext context) {
