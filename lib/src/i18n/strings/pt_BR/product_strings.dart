@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/interfaces/i18n/product_strings_interface.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/strings/product_strings_interface.dart';
 
 class PtBrProductStrings implements ProductStringsInterface {
   @override

@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:chefpartner_mobile/src/i18n/currency_patterns.dart';
-import 'package:chefpartner_mobile/src/i18n/en_US/strings.dart';
+import 'package:chefpartner_mobile/src/i18n/strings/en_US/strings.dart';
 import 'package:chefpartner_mobile/src/i18n/locales.dart';
-import 'package:chefpartner_mobile/src/interfaces/i18n/strings_interface.dart';
-import 'package:chefpartner_mobile/src/i18n/pt_BR/strings.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/strings/strings_interface.dart';
+import 'package:chefpartner_mobile/src/i18n/strings/pt_BR/strings.dart';
 
 class I18n {
   static StringsInterface _strings = EnUsStrings();
@@ -15,12 +15,12 @@ class I18n {
     Locale locale = window.locale;
     _currentLocale = Locales.fromLocaleString(
         '${locale.languageCode}_${locale.countryCode}');
-    _strings = _getLanguageStrings(_currentLocale);
+    _strings = _getLanguageStrings();
     _currencyPattern = CurrencyPatterns.fromLocale(_currentLocale);
   }
 
-  static StringsInterface _getLanguageStrings(Locales currentLocale) {
-    switch (currentLocale) {
+  static StringsInterface _getLanguageStrings() {
+    switch (_currentLocale) {
       case Locales.enUs:
         return EnUsStrings();
 

@@ -1,4 +1,4 @@
-import 'package:chefpartner_mobile/src/interfaces/i18n/payment_method_strings_interface.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/strings/payment_method_strings_interface.dart';
 
 class PtBrPaymentMethodStrings implements PaymentMethodStringsInterface {
   @override

@@ -9,7 +9,7 @@ class ProductValidator implements DefaultValidatorInterface<ProductDTO> {
       throw ValidationException('Product name is required');
     }
 
-    if (model.getPrice() <= 0) {
+    if (model.getPrice() < 0) {
       throw ValidationException('Product price is required');
     }
   }
