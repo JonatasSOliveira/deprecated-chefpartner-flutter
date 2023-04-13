@@ -20,6 +20,9 @@ abstract class GenericService<M extends GenericDTO,
       await _dao.create(model);
     } on ValidationException catch (e) {
       GenericDialog.showAlertDialog(e.toString());
+      rethrow;
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -29,6 +32,9 @@ abstract class GenericService<M extends GenericDTO,
       await _dao.update(modelId, model);
     } on ValidationException catch (e) {
       GenericDialog.showAlertDialog(e.toString());
+      rethrow;
+    } catch (e) {
+      rethrow;
     }
   }
 

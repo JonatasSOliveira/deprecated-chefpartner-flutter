@@ -1,5 +1,6 @@
 import 'package:chefpartner_mobile/src/views/components/currency_input_component.dart';
 import 'package:chefpartner_mobile/src/controllers/product_controller.dart';
+import 'package:chefpartner_mobile/src/extensions/string_extesion.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chefpartner_mobile/src/views/components/default_form_component.dart';
@@ -95,7 +96,7 @@ class _ProductFormState extends State<ProductForm> {
                   label: Text(I18n.strings.general.price),
                   hintText: '',
                 ),
-                onChanged: (value) => setState(() => _price = int.parse(value)),
+                onChanged: (value) => setState(() => _price = value.toInt()),
               ))
             ],
           )

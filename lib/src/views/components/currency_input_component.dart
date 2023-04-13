@@ -43,6 +43,7 @@ class _CurrencyInputComponentState extends State<CurrencyInputComponent> {
       ],
       decoration: widget.decoration,
       style: widget.textStyle,
+      onChanged: widget.onChanged,
     );
   }
 }

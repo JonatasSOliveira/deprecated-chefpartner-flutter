@@ -19,7 +19,7 @@ class DefaultFormArguments {
 
 class DefaultFormComponent extends StatelessWidget {
   final String title;
-  final VoidCallback onConfirm;
+  final Future<void> Function() onConfirm;
   final List<Widget> children;
 
   const DefaultFormComponent({
@@ -34,8 +34,7 @@ class DefaultFormComponent extends StatelessWidget {
   void _cancelForm(BuildContext context) => _closeForm(context);
 
   void _confirmForm(BuildContext context) {
-    onConfirm();
-    _closeForm(context);
+    onConfirm().then((_) => _closeForm(context));
   }
 
   @override
