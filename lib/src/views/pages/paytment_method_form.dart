@@ -24,11 +24,11 @@ class _PaymentMethodFormState extends State<PaymentMethodForm> {
     PaymentMethodDTO? paymentMethod =
         DefaultFormArguments.getEditDTO(context) as PaymentMethodDTO?;
     if (paymentMethod != null) {
-      _initializeEdition(paymentMethod);
+      _initInputs(paymentMethod);
     }
   }
 
-  void _initializeEdition(PaymentMethodDTO paymentMethod) {
+  void _initInputs(PaymentMethodDTO paymentMethod) {
     _nameController.text = paymentMethod.getName();
     setState(() {
       _name = paymentMethod.getName();

@@ -9,4 +9,6 @@ class EnUsCustomerStrings implements CustomerStringsInterface {
   String get newRegister => 'New Customer';
   @override
   String get formTitle => 'Customer Form';
+  @override
+  String get federalDocument => 'Federal Doc.';
 }

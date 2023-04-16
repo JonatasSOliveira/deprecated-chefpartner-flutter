@@ -31,11 +31,11 @@ class _ProductFormState extends State<ProductForm> {
         DefaultFormArguments.getEditDTO(context) as ProductDTO?;
 
     if (product != null) {
-      _initializeEdition(product);
+      _initInputs(product);
     }
   }
 
-  void _initializeEdition(ProductDTO product) {
+  void _initInputs(ProductDTO product) {
     _nameController.text = product.getName();
     _descriptionController.text = product.getDescription();
     _priceController.text = product.getPrice().toString();

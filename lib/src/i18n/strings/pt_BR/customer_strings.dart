@@ -9,4 +9,6 @@ class PtBrCustomerStrings implements CustomerStringsInterface {
   String get newRegister => 'Novo Cliente';
   @override
   String get formTitle => 'Formulário Cliente';
+  @override
+  String get federalDocument => 'CPF/CNPJ';
 }
