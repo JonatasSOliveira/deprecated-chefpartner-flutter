@@ -1,9 +1,10 @@
 import 'package:chefpartner_mobile/src/views/components/currency_input_component.dart';
 import 'package:chefpartner_mobile/src/controllers/product_controller.dart';
 import 'package:chefpartner_mobile/src/extensions/string_extesion.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_arguments.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chefpartner_mobile/src/views/components/default_form_component.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_component.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
 
@@ -15,7 +16,6 @@ class ProductForm extends StatefulWidget {
 }
 
 class _ProductFormState extends State<ProductForm> {
-  dynamic _id;
   String _name = '';
   String? _description;
   String _price = '';
@@ -28,7 +28,7 @@ class _ProductFormState extends State<ProductForm> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     ProductDTO? product =
-        DefaultFormArguments.getEditModel(context) as ProductDTO?;
+        DefaultFormArguments.getEditDTO(context) as ProductDTO?;
 
     if (product != null) {
       _initializeEdition(product);
@@ -40,30 +40,19 @@ class _ProductFormState extends State<ProductForm> {
     _descriptionController.text = product.getDescription();
     _priceController.text = product.getPrice().toString();
     setState(() {
-      _id = product.getId();
       _name = product.getName();
       _description = product.getDescription();
       _price = product.getPrice().toString();
     });
   }
 
-  Future<void> _saveProductForm() async {
-    final product = ProductDTO(
-        name: _name, description: _description, price: _price.toInt());
-
-    if (_id != null) {
-      await ProductController().update(_id, product);
-      return;
-    }
-
-    await ProductController().create(product);
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
         title: I18n.strings.product.formTitle,
-        onConfirm: _saveProductForm,
+        controller: ProductController(),
+        getDTOWithValues: () => ProductDTO(
+            name: _name, description: _description, price: _price.toInt()),
         children: [
           Row(children: [
             Expanded(
