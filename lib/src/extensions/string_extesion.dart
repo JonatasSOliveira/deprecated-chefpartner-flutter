@@ -1,5 +1,10 @@
 extension StringExtension on String {
-  int toInt() {
-    return int.parse(replaceAll('.', '').replaceAll(',', ''));
+  String _removeNonCurrencyChars() {
+    return replaceAll(RegExp(r'[^\d.,]+'), '');
+  }
+
+  int currencyToInt() {
+    return int.parse(
+        _removeNonCurrencyChars().replaceAll('.', '').replaceAll(',', ''));
   }
 }

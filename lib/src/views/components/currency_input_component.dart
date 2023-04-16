@@ -22,8 +22,9 @@ class CurrencyInputComponent extends StatefulWidget {
 }
 
 class _CurrencyInputComponentState extends State<CurrencyInputComponent> {
-  final NumberFormat _currencyFormat = NumberFormat(
-      I18n.currencyPattern.getPattern(), I18n.currentLocale.getLocaleString());
+  final NumberFormat _currencyFormat = NumberFormat.currency(
+      locale: I18n.currentLocale.getLocaleString(),
+      symbol: I18n.currentLocale.getCurrencySymbol());
 
   String _formatText(String text) {
     if (text.isEmpty) {

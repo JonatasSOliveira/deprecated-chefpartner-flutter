@@ -52,7 +52,9 @@ class _ProductFormState extends State<ProductForm> {
         title: I18n.strings.product.formTitle,
         controller: ProductController(),
         getDTOWithValues: () => ProductDTO(
-            name: _name, description: _description, price: _price.toInt()),
+            name: _name,
+            description: _description,
+            price: _price.currencyToInt()),
         children: [
           Row(children: [
             Expanded(
