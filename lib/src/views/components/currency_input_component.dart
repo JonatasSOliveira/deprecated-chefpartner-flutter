@@ -25,6 +25,23 @@ class _CurrencyInputComponentState extends State<CurrencyInputComponent> {
   final NumberFormat _currencyFormat = NumberFormat(
       I18n.currencyPattern.getPattern(), I18n.currentLocale.getLocaleString());
 
+  String _formatText(String text) {
+    if (text.isEmpty) {
+      return text;
+    }
+
+    final value = double.parse(text);
+    return _currencyFormat.format(value / 100);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.controller != null && widget.controller?.text != '') {
+      widget.controller!.text = _formatText(widget.controller?.text ?? '');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -33,8 +50,7 @@ class _CurrencyInputComponentState extends State<CurrencyInputComponent> {
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
         TextInputFormatter.withFunction((oldValue, newValue) {
-          final value = double.parse(newValue.text);
-          final newText = _currencyFormat.format(value / 100);
+          final newText = _formatText(newValue.text);
           return TextEditingValue(
             text: newText,
             selection: TextSelection.collapsed(offset: newText.length),
