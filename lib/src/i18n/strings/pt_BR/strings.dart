@@ -1,3 +1,5 @@
+import 'package:chefpartner_mobile/src/i18n/strings/pt_BR/customer_strings.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/strings/customer_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/general_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/home_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/payment_method_strings_interface.dart';
@@ -17,4 +19,6 @@ class PtBrStrings implements StringsInterface {
   PaymentMethodStringsInterface get paymentMethod => PtBrPaymentMethodStrings();
   @override
   ProductStringsInterface get product => PtBrProductStrings();
+  @override
+  CustomerStringsInterface get customer => PtBrCustomerStrings();
 }

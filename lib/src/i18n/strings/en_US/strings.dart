@@ -1,7 +1,9 @@
+import 'package:chefpartner_mobile/src/i18n/strings/en_US/customer_strings.dart';
 import 'package:chefpartner_mobile/src/i18n/strings/en_US/general.dart';
 import 'package:chefpartner_mobile/src/i18n/strings/en_US/home_strings.dart';
 import 'package:chefpartner_mobile/src/i18n/strings/en_US/payment_method_strings.dart';
 import 'package:chefpartner_mobile/src/i18n/strings/en_US/product_strings.dart';
+import 'package:chefpartner_mobile/src/interfaces/i18n/strings/customer_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/general_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/home_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/payment_method_strings_interface.dart';
@@ -17,4 +19,6 @@ class EnUsStrings implements StringsInterface {
   PaymentMethodStringsInterface get paymentMethod => EnUsPaymentMethodStrings();
   @override
   ProductStringsInterface get product => EnUsProductStrings();
+  @override
+  CustomerStringsInterface get customer => EnUsCustomerStrings();
 }
