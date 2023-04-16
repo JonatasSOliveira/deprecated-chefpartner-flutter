@@ -18,7 +18,7 @@ class _ProductFormState extends State<ProductForm> {
   dynamic _id;
   String _name = '';
   String? _description;
-  int _price = 0;
+  String _price = '';
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
@@ -43,13 +43,13 @@ class _ProductFormState extends State<ProductForm> {
       _id = product.getId();
       _name = product.getName();
       _description = product.getDescription();
-      _price = product.getPrice();
+      _price = product.getPrice().toString();
     });
   }
 
   Future<void> _saveProductForm() async {
-    final product =
-        ProductDTO(name: _name, description: _description, price: _price);
+    final product = ProductDTO(
+        name: _name, description: _description, price: _price.toInt());
 
     if (_id != null) {
       await ProductController().update(_id, product);
@@ -96,7 +96,7 @@ class _ProductFormState extends State<ProductForm> {
                   label: Text(I18n.strings.general.price),
                   hintText: '',
                 ),
-                onChanged: (value) => setState(() => _price = value.toInt()),
+                onChanged: (value) => setState(() => _price = value),
               ))
             ],
           )
