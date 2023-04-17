@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:chefpartner_mobile/src/controllers/customer_controller.dart';
 import 'package:chefpartner_mobile/src/dtos/customer_dto.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_state.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_state.dart';
 import 'package:chefpartner_mobile/src/views/input_formatters/cpf_cnpj_mask_text_input_formatter.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_component.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
 
 class CustomerForm extends StatefulWidget {
   const CustomerForm({super.key});

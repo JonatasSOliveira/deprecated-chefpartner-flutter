@@ -1,7 +1,7 @@
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_arguments.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_arguments.dart';
 import 'package:flutter/material.dart';
 
 class DefaultFormComponent<DTO extends GenericDTO> extends StatefulWidget {

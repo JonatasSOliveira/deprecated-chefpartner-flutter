@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:chefpartner_mobile/src/views/components/currency_input_component.dart';
 import 'package:chefpartner_mobile/src/controllers/product_controller.dart';
 import 'package:chefpartner_mobile/src/extensions/string_extesion.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_state.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_component.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_state.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
 

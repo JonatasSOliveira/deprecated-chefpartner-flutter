@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_arguments.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_arguments.dart';
 
 abstract class DefaultFormState<T extends StatefulWidget,
     DTO extends GenericDTO> extends State<T> {

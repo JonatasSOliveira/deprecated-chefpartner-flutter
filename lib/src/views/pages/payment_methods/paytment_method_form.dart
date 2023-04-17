@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_state.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_state.dart';
 import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/payment_method_dto.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_component.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
 
 class PaymentMethodForm extends StatefulWidget {
   const PaymentMethodForm({super.key});

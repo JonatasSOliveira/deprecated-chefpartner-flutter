@@ -1,12 +1,12 @@
-import 'package:chefpartner_mobile/src/views/pages/customer_form.dart';
-import 'package:chefpartner_mobile/src/views/pages/cutomers.dart';
-import 'package:chefpartner_mobile/src/views/pages/home.dart';
-import 'package:chefpartner_mobile/src/views/pages/order_form.dart';
-import 'package:chefpartner_mobile/src/views/pages/orders.dart';
-import 'package:chefpartner_mobile/src/views/pages/payment_methods.dart';
-import 'package:chefpartner_mobile/src/views/pages/paytment_method_form.dart';
-import 'package:chefpartner_mobile/src/views/pages/product_form.dart';
-import 'package:chefpartner_mobile/src/views/pages/products.dart';
+import 'package:chefpartner_mobile/src/views/pages/customers/customer_form.dart';
+import 'package:chefpartner_mobile/src/views/pages/customers/cutomers.dart';
+import 'package:chefpartner_mobile/src/views/pages/home/home.dart';
+import 'package:chefpartner_mobile/src/views/pages/orders/order_form.dart';
+import 'package:chefpartner_mobile/src/views/pages/orders/orders.dart';
+import 'package:chefpartner_mobile/src/views/pages/payment_methods/payment_methods.dart';
+import 'package:chefpartner_mobile/src/views/pages/payment_methods/paytment_method_form.dart';
+import 'package:chefpartner_mobile/src/views/pages/products/product_form.dart';
+import 'package:chefpartner_mobile/src/views/pages/products/products.dart';
 import 'package:flutter/material.dart';
 
 Map<String, Widget Function(BuildContext)> screenRoutes = {
