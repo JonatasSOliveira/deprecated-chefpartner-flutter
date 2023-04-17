@@ -5,6 +5,7 @@ import 'package:chefpartner_mobile/src/views/components/default_form/default_for
 abstract class DefaultFormState<T extends StatefulWidget,
     DTO extends GenericDTO> extends State<T> {
   @override
+  @mustCallSuper
   void didChangeDependencies() {
     super.didChangeDependencies();
     DTO? product = DefaultFormArguments.getEditDTO(context) as DTO?;

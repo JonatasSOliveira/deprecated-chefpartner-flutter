@@ -1,3 +1,5 @@
+import 'package:chefpartner_mobile/src/controllers/customer_address_controller.dart';
+import 'package:chefpartner_mobile/src/dtos/customer_address_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:chefpartner_mobile/src/controllers/customer_controller.dart';
@@ -23,10 +25,22 @@ class CustomerForm extends StatefulWidget {
 class _CustomerFormState extends DefaultFormState<CustomerForm, CustomerDTO> {
   String _name = '';
   String _federalDocument = '';
+  List<CustomerAddressDTO> _addresses = [];
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _federalDocumentController =
       TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> _loadAddress() async {
+    final addresses = await CustomerAddressController().listAllByCustomerId(
+      
+    )
+  }
 
   @override
   void initInputs(CustomerDTO customer) {
@@ -40,10 +54,6 @@ class _CustomerFormState extends DefaultFormState<CustomerForm, CustomerDTO> {
 
   CustomerDTO _getDTOWithValues() {
     return CustomerDTO(name: _name, federalDocument: _federalDocument);
-  }
-
-  void _openCustomerAddressForm() {
-    Navigator.pushNamed(context, '/customer_address_form');
   }
 
   @override
