@@ -1,4 +1,9 @@
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
+import 'package:chefpartner_mobile/src/views/pages/customers/cutomers.dart';
+import 'package:chefpartner_mobile/src/views/pages/home/home.dart';
+import 'package:chefpartner_mobile/src/views/pages/orders/orders.dart';
+import 'package:chefpartner_mobile/src/views/pages/payment_methods/payment_methods.dart';
+import 'package:chefpartner_mobile/src/views/pages/products/products.dart';
 import 'package:flutter/material.dart';
 
 class DrawerContainer extends StatelessWidget {
@@ -30,23 +35,23 @@ class DrawerContainer extends StatelessWidget {
           ),
           ListTile(
             title: Text(I18n.strings.home.singularName),
-            onTap: () => _navigateTo(context, '/'),
+            onTap: () => _navigateTo(context, Home.getRouteName()),
           ),
           ListTile(
             title: Text(I18n.strings.customer.pluralName),
-            onTap: () => _navigateTo(context, '/customers'),
+            onTap: () => _navigateTo(context, Customers.getRouteName()),
           ),
           ListTile(
             title: const Text('Pedidos'),
-            onTap: () => _navigateTo(context, '/orders'),
+            onTap: () => _navigateTo(context, Orders.getRouteName()),
           ),
           ListTile(
             title: Text(I18n.strings.product.pluralName),
-            onTap: () => _navigateTo(context, '/products'),
+            onTap: () => _navigateTo(context, Products.getRouteName()),
           ),
           ListTile(
             title: Text(I18n.strings.paymentMethod.pluralName),
-            onTap: () => _navigateTo(context, '/payment_methods'),
+            onTap: () => _navigateTo(context, PaymentMethods.getRouteName()),
           )
         ]),
       ),

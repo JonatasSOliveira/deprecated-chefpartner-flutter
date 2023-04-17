@@ -6,7 +6,13 @@ import 'package:chefpartner_mobile/src/dtos/payment_method_dto.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
 
 class PaymentMethodForm extends StatefulWidget {
+  static const String _routeName = '/payment_method_form';
+
   const PaymentMethodForm({super.key});
+
+  static String getRouteName() {
+    return _routeName;
+  }
 
   @override
   State<PaymentMethodForm> createState() => _PaymentMethodFormState();

@@ -8,7 +8,13 @@ import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
 
 class ProductForm extends StatefulWidget {
+  static const String _routeName = '/product_form';
+
   const ProductForm({super.key});
+
+  static String getRouteName() {
+    return _routeName;
+  }
 
   @override
   State<ProductForm> createState() => _ProductFormState();

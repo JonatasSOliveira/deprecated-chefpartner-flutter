@@ -8,7 +8,13 @@ import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
 
 class CustomerForm extends StatefulWidget {
+  static const String _routeName = '/customer_form';
+
   const CustomerForm({super.key});
+
+  static String getRouteName() {
+    return _routeName;
+  }
 
   @override
   State<CustomerForm> createState() => _CustomerFormState();
@@ -34,6 +40,10 @@ class _CustomerFormState extends DefaultFormState<CustomerForm, CustomerDTO> {
 
   CustomerDTO _getDTOWithValues() {
     return CustomerDTO(name: _name, federalDocument: _federalDocument);
+  }
+
+  void _openCustomerAddressForm() {
+    Navigator.pushNamed(context, '/customer_address_form');
   }
 
   @override

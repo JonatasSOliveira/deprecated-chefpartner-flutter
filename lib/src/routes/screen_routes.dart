@@ -10,13 +10,13 @@ import 'package:chefpartner_mobile/src/views/pages/products/products.dart';
 import 'package:flutter/material.dart';
 
 Map<String, Widget Function(BuildContext)> screenRoutes = {
-  '/': (context) => const Home(),
-  '/customers': (context) => const Customers(),
-  '/customer_form': (context) => const CustomerForm(),
-  '/orders': (context) => const Orders(),
-  '/order_form': (context) => const OrderForm(),
-  '/products': (context) => const Products(),
-  '/product_form': (context) => const ProductForm(),
-  '/payment_methods': (context) => const PaymentMethods(),
-  '/payment_method_form': (context) => const PaymentMethodForm(),
+  Home.getRouteName(): (context) => const Home(),
+  Customers.getRouteName(): (context) => const Customers(),
+  CustomerForm.getRouteName(): (context) => const CustomerForm(),
+  Orders.getRouteName(): (context) => const Orders(),
+  OrderForm.getRouteName(): (context) => const OrderForm(),
+  Products.getRouteName(): (context) => const Products(),
+  ProductForm.getRouteName(): (context) => const ProductForm(),
+  PaymentMethods.getRouteName(): (context) => const PaymentMethods(),
+  PaymentMethodForm.getRouteName(): (context) => const PaymentMethodForm(),
 };

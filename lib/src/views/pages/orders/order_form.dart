@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class OrderForm extends StatefulWidget {
+  static const String _routeName = '/order_form';
+
   const OrderForm({super.key});
+
+  static String getRouteName() {
+    return _routeName;
+  }
 
   @override
   State<OrderForm> createState() => _OrderFormState();
