@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:chefpartner_mobile/src/controllers/customer_controller.dart';
 import 'package:chefpartner_mobile/src/dtos/customer_dto.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_arguments.dart';
-import 'package:flutter/material.dart';
+import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_state.dart';
+import 'package:chefpartner_mobile/src/views/input_formatters/cpf_cnpj_mask_text_input_formatter.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_component.dart';
 
@@ -12,7 +14,7 @@ class CustomerForm extends StatefulWidget {
   State<CustomerForm> createState() => _CustomerFormState();
 }
 
-class _CustomerFormState extends State<CustomerForm> {
+class _CustomerFormState extends DefaultFormState<CustomerForm, CustomerDTO> {
   String _name = '';
   String _federalDocument = '';
 
@@ -21,17 +23,7 @@ class _CustomerFormState extends State<CustomerForm> {
       TextEditingController();
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    CustomerDTO? product =
-        DefaultFormArguments.getEditDTO(context) as CustomerDTO?;
-
-    if (product != null) {
-      _initInputs(product);
-    }
-  }
-
-  void _initInputs(CustomerDTO customer) {
+  void initInputs(CustomerDTO customer) {
     _nameController.text = customer.getName();
     _federalDocumentController.text = customer.getFederalDocument();
     setState(() {
@@ -40,13 +32,16 @@ class _CustomerFormState extends State<CustomerForm> {
     });
   }
 
+  CustomerDTO _getDTOWithValues() {
+    return CustomerDTO(name: _name, federalDocument: _federalDocument);
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
         title: I18n.strings.customer.formTitle,
         controller: CustomerController(),
-        getDTOWithValues: () =>
-            CustomerDTO(name: _name, federalDocument: _federalDocument),
+        getDTOWithValues: _getDTOWithValues,
         children: [
           Row(children: [
             Expanded(
@@ -60,6 +55,11 @@ class _CustomerFormState extends State<CustomerForm> {
           Row(children: [
             Expanded(
                 child: TextField(
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(18),
+                CpfCnpjMaskTextInputFormatter()
+              ],
               controller: _federalDocumentController,
               decoration: InputDecoration(
                   label: Text(I18n.strings.customer.federalDocument),
