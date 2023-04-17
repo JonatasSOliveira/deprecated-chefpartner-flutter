@@ -1,9 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:chefpartner_mobile/src/views/components/currency_input_component.dart';
 import 'package:chefpartner_mobile/src/controllers/product_controller.dart';
 import 'package:chefpartner_mobile/src/extensions/string_extesion.dart';
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_arguments.dart';
-import 'package:flutter/material.dart';
-
+import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_state.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_component.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
@@ -15,7 +14,7 @@ class ProductForm extends StatefulWidget {
   State<ProductForm> createState() => _ProductFormState();
 }
 
-class _ProductFormState extends State<ProductForm> {
+class _ProductFormState extends DefaultFormState<ProductForm, ProductDTO> {
   String _name = '';
   String? _description;
   String _price = '';
@@ -25,17 +24,7 @@ class _ProductFormState extends State<ProductForm> {
   final TextEditingController _priceController = TextEditingController();
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    ProductDTO? product =
-        DefaultFormArguments.getEditDTO(context) as ProductDTO?;
-
-    if (product != null) {
-      _initInputs(product);
-    }
-  }
-
-  void _initInputs(ProductDTO product) {
+  void initInputs(ProductDTO product) {
     _nameController.text = product.getName();
     _descriptionController.text = product.getDescription();
     _priceController.text = product.getPrice().toString();

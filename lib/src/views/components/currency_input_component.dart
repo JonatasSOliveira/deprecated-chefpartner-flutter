@@ -1,7 +1,7 @@
-import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 
 class CurrencyInputComponent extends StatefulWidget {
   final TextEditingController? controller;

@@ -1,6 +1,5 @@
-import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_arguments.dart';
 import 'package:flutter/material.dart';
-
+import 'package:chefpartner_mobile/src/views/components/default_form_component/default_form_state.dart';
 import 'package:chefpartner_mobile/src/controllers/payment_method_controller.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/dtos/payment_method_dto.dart';
@@ -13,22 +12,14 @@ class PaymentMethodForm extends StatefulWidget {
   State<PaymentMethodForm> createState() => _PaymentMethodFormState();
 }
 
-class _PaymentMethodFormState extends State<PaymentMethodForm> {
+class _PaymentMethodFormState
+    extends DefaultFormState<PaymentMethodForm, PaymentMethodDTO> {
   String _name = '';
 
   final TextEditingController _nameController = TextEditingController();
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    PaymentMethodDTO? paymentMethod =
-        DefaultFormArguments.getEditDTO(context) as PaymentMethodDTO?;
-    if (paymentMethod != null) {
-      _initInputs(paymentMethod);
-    }
-  }
-
-  void _initInputs(PaymentMethodDTO paymentMethod) {
+  void initInputs(PaymentMethodDTO paymentMethod) {
     _nameController.text = paymentMethod.getName();
     setState(() {
       _name = paymentMethod.getName();
