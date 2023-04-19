@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/models/generic_model/generic_model.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:chefpartner_mobile/src/services/generic_service.dart';
 

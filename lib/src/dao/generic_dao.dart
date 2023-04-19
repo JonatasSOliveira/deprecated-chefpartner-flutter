@@ -1,5 +1,5 @@
 import 'package:chefpartner_mobile/src/database/sqlite_database_connection.dart';
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/models/generic_model/generic_model.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:chefpartner_mobile/src/models/migration_model.dart';
 import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
-import 'package:chefpartner_mobile/src/models/generic_model.dart';
+import 'package:chefpartner_mobile/src/models/generic_model/generic_model.dart';
 import 'package:chefpartner_mobile/src/models/city_model.dart';
 import 'package:chefpartner_mobile/src/models/country_model.dart';
 import 'package:chefpartner_mobile/src/models/state_model.dart';
