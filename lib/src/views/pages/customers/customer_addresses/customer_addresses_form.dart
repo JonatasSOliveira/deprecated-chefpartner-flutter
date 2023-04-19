@@ -5,6 +5,10 @@ import 'package:chefpartner_mobile/src/views/pages/customers/customer_addresses/
 import 'package:chefpartner_mobile/src/views/components/default_form/default_form_state.dart';
 
 class CustomerAddressesForm extends StatefulWidget {
+  static const String _route = '/customer/address';
+
+  static String getRouteName() => _route;
+
   const CustomerAddressesForm({super.key});
 
   @override
@@ -18,7 +22,7 @@ class _CustomerAddressesFormState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final customer = CustomerAddressesFormArguments.getCustomerId(context);
+    final customer = CustomerAddressesFormArguments.getCustomer(context);
     if (customer != null) {
       _customer = customer;
     }

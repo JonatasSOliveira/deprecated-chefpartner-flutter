@@ -23,11 +23,10 @@ class DefaultFormComponent<DTO extends GenericDTO> extends StatefulWidget {
         super(key: key);
 
   @override
-  State<DefaultFormComponent> createState() =>
-      _DefaultFormComponentState<DTO>();
+  State<DefaultFormComponent> createState() => DefaultFormComponentState<DTO>();
 }
 
-class _DefaultFormComponentState<DTO extends GenericDTO>
+class DefaultFormComponentState<DTO extends GenericDTO>
     extends State<DefaultFormComponent> {
   dynamic _id;
 
@@ -35,7 +34,7 @@ class _DefaultFormComponentState<DTO extends GenericDTO>
 
   void _cancelForm(BuildContext context) => _closeForm(context);
 
-  Future<void> _saveModel() async {
+  Future<void> saveModel() async {
     if (_id == null) {
       await widget._controller.create(widget._getDTOWithValues());
       return;
@@ -45,7 +44,7 @@ class _DefaultFormComponentState<DTO extends GenericDTO>
   }
 
   void _confirmForm(BuildContext context) {
-    _saveModel().then((_) => _closeForm(context));
+    saveModel().then((_) => _closeForm(context));
   }
 
   @override
