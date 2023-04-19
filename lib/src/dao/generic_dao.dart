@@ -1,6 +1,8 @@
 import 'package:chefpartner_mobile/src/database/sqlite_database_connection.dart';
 import 'package:chefpartner_mobile/src/models/generic_model.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
+import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
 
 abstract class GenericDAO<DM extends GenericModel, M extends GenericDTO> {
   final DM _databaseModel;
@@ -13,6 +15,13 @@ abstract class GenericDAO<DM extends GenericModel, M extends GenericDTO> {
   List<Object?> getAttributesValues(M model);
 
   M fromMap(Map<String, dynamic> map);
+
+  @protected
+  DM getModel() => _databaseModel;
+
+  @protected
+  Future<Database> getDatabaseConnection() =>
+      SQLiteDatabaseConnection.getDatabase();
 
   Future<void> create(M model) async {
     final dbConnection = await SQLiteDatabaseConnection.getDatabase();

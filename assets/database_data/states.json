@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "country": { "id": 1, "name": "" },
+    "name": "Acre",
+    "abbreviation": "AC"
+  },
+  {
+    "id": 2,
+    "country": { "id": 1, "name": "" },
+    "name": "Alagoas",
+    "abbreviation": "AL"
+  },
+  {
+    "id": 3,
+    "country": { "id": 1, "name": "" },
+    "name": "Amapá",
+    "abbreviation": "AP"
+  },
+  {
+    "id": 4,
+    "country": { "id": 1, "name": "" },
+    "name": "Amazonas",
+    "abbreviation": "AM"
+  },
+  {
+    "id": 5,
+    "country": { "id": 1, "name": "" },
+    "name": "Bahia",
+    "abbreviation": "BA"
+  },
+  {
+    "id": 6,
+    "country": { "id": 1, "name": "" },
+    "name": "Ceará",
+    "abbreviation": "CE"
+  },
+  {
+    "id": 7,
+    "country": { "id": 1, "name": "" },
+    "name": "Distrito Federal",
+    "abbreviation": "DF"
+  },
+  {
+    "id": 8,
+    "country": { "id": 1, "name": "" },
+    "name": "Espírito Santo",
+    "abbreviation": "ES"
+  },
+  {
+    "id": 9,
+    "country": { "id": 1, "name": "" },
+    "name": "Goiás",
+    "abbreviation": "GO"
+  },
+  {
+    "id": 10,
+    "country": { "id": 1, "name": "" },
+    "name": "Maranhão",
+    "abbreviation": "MA"
+  },
+  {
+    "id": 11,
+    "country": { "id": 1, "name": "" },
+    "name": "Mato Grosso",
+    "abbreviation": "MT"
+  },
+  {
+    "id": 12,
+    "country": { "id": 1, "name": "" },
+    "name": "Mato Grosso do Sul",
+    "abbreviation": "MS"
+  },
+  {
+    "id": 13,
+    "country": { "id": 1, "name": "" },
+    "name": "Minas Gerais",
+    "abbreviation": "MG"
+  },
+  {
+    "id": 14,
+    "country": { "id": 1, "name": "" },
+    "name": "Pará",
+    "abbreviation": "PA"
+  },
+  {
+    "id": 15,
+    "country": { "id": 1, "name": "" },
+    "name": "Paraíba",
+    "abbreviation": "PB"
+  },
+  {
+    "id": 16,
+    "country": { "id": 1, "name": "" },
+    "name": "Paraná",
+    "abbreviation": "PR"
+  },
+  {
+    "id": 17,
+    "country": { "id": 1, "name": "" },
+    "name": "Pernambuco",
+    "abbreviation": "PE"
+  },
+  {
+    "id": 18,
+    "country": { "id": 1, "name": "" },
+    "name": "Piauí",
+    "abbreviation": "PI"
+  },
+  {
+    "id": 19,
+    "country": { "id": 1, "name": "" },
+    "name": "Rio de Janeiro",
+    "abbreviation": "RJ"
+  },
+  {
+    "id": 20,
+    "country": { "id": 1, "name": "" },
+    "name": "Rio Grande do Norte",
+    "abbreviation": "RN"
+  },
+  {
+    "id": 21,
+    "country": { "id": 1, "name": "" },
+    "name": "Rio Grande do Sul",
+    "abbreviation": "RS"
+  },
+  {
+    "id": 22,
+    "country": { "id": 1, "name": "" },
+    "name": "Rondônia",
+    "abbreviation": "RO"
+  },
+  {
+    "id": 23,
+    "country": { "id": 1, "name": "" },
+    "name": "Roraima",
+    "abbreviation": "RR"
+  },
+  {
+    "id": 24,
+    "country": { "id": 1, "name": "" },
+    "name": "Santa Catarina",
+    "abbreviation": "SC"
+  },
+  {
+    "id": 25,
+    "country": { "id": 1, "name": "" },
+    "name": "São Paulo",
+    "abbreviation": "SP"
+  },
+  {
+    "id": 26,
+    "country": { "id": 1, "name": "" },
+    "name": "Sergipe",
+    "abbreviation": "SE"
+  },
+  {
+    "id": 27,
+    "country": { "id": 1, "name": "" },
+    "name": "Tocantins",
+    "abbreviation": "TO"
+  }
+]

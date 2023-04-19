@@ -4,14 +4,13 @@ import 'package:chefpartner_mobile/src/models/state_model.dart';
 
 class StateDAO extends GenericDAO<StateModel, StateDTO> {
   StateDAO()
-      : super(databaseModel: StateModel(), defaultInsertAttributes: [
-          'name',
-        ]);
+      : super(
+            databaseModel: StateModel(),
+            defaultInsertAttributes: ['name', 'abbreviation', 'country_id']);
 
   @override
-  List<Object?> getAttributesValues(StateDTO model) => [
-        model.getName(),
-      ];
+  List<Object?> getAttributesValues(StateDTO model) =>
+      [model.getName(), model.getAbbreviation(), model.getCountry()?.getId()];
 
   @override
   StateDTO fromMap(Map<String, dynamic> map) {

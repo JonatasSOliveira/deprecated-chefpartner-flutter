@@ -1,20 +1,11 @@
+import 'package:chefpartner_mobile/src/database/database_cmds.dart';
+import 'package:chefpartner_mobile/src/database/database_migration_runner.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:chefpartner_mobile/src/models/customer_address_model.dart';
-import 'package:chefpartner_mobile/src/models/product_model.dart';
-import 'package:chefpartner_mobile/src/models/customer_model.dart';
-import 'package:chefpartner_mobile/src/models/payment_method_model.dart';
-
 class SQLiteDatabaseConnection {
   static Database? _db;
-
-  static void _syncTables(Database db) {
-    db.execute(PaymentMethodModel().getCreateTableScript());
-    db.execute(ProductModel().getCreateTableScript());
-    db.execute(CustomerModel().getCreateTableScript());
-    db.execute(CustomerAddressModel().getCreateTableScript());
-  }
+  static bool _migrationsAlreadyRunning = false;
 
   static Future<void> createDatabase() async {
     if (_db != null) {
@@ -22,7 +13,13 @@ class SQLiteDatabaseConnection {
     }
 
     String path = join(await getDatabasesPath(), 'chefpartner.db');
-    _db = await openDatabase(path, onOpen: (db) => _syncTables(db));
+    _db = await openDatabase(path, onOpen: (db) async {
+      await DatabaseCmds(db).syncTables();
+    });
+    if (!_migrationsAlreadyRunning) {
+      _migrationsAlreadyRunning = true;
+      DatabaseMigrationRunner(_db!).runMigrations();
+    }
   }
 
   static Future<Database> getDatabase() async {
