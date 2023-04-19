@@ -16,8 +16,10 @@ abstract class GenericDTO {
 
   GenericDTO.fromMap(Map<String, dynamic> map) {
     _id = map['id'];
-    _createdAt = DateTime.parse(map['created_at']);
-    _updatedAt = DateTime.parse(map['updated_at']);
+    _createdAt =
+        map['created_at'] != null ? DateTime.parse(map['created_at']) : null;
+    _updatedAt =
+        map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null;
     _deletedAt =
         map['deleted_at'] != null ? DateTime.parse(map['deleted_at']) : null;
   }
