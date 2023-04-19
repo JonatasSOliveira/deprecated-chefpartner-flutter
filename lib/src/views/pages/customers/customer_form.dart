@@ -30,7 +30,8 @@ class _CustomerFormState extends DefaultFormState<CustomerForm, CustomerDTO> {
   List<CustomerAddressDTO> _addresses = [];
   CustomerDTO? _customer;
 
-  GlobalKey<DefaultFormComponentState> _defaultFromComponentKey = GlobalKey();
+  final GlobalKey<DefaultFormComponentState> _defaultFromComponentKey =
+      GlobalKey();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _federalDocumentController =
       TextEditingController();

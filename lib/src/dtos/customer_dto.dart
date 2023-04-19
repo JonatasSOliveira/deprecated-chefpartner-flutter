@@ -16,7 +16,7 @@ class CustomerDTO extends GenericDTO {
 
   CustomerDTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
     _name = map['name'];
-    _federalDocument = map['federalDocument'];
+    _federalDocument = map['federal_document'];
   }
 
   String getName() => _name;
