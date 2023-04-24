@@ -39,7 +39,7 @@ abstract class GenericService<M extends GenericDTO,
     }
   }
 
-  Future<List<M>> listAll() async => await _repository.listAll();
+  Future<List<M>> listAll() async => await _repository.findAll();
 
   Future<void> softDelete(dynamic modelId) async =>
       await _repository.softDelete(modelId);

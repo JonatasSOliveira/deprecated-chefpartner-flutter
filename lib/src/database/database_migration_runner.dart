@@ -12,14 +12,10 @@ class DatabaseMigrationRunner {
   DatabaseMigrationRunner(this._db);
 
   Future<void> runMigrations() async {
-    for (var migration in _migrations) {
-      final migrationDB =
-          await _migrationRepository.getMigrationByName(migration.getName());
-
-      if (migrationDB != null) {
-        return;
-      }
-
+    final lastMigration = await _migrationRepository.findLastMigration();
+    final indexLastMigration = _migrations.indexWhere(
+        (migration) => migration.getName() == lastMigration?.getName());
+    for (var migration in _migrations.sublist(indexLastMigration)) {
       await migration.run(_db);
       await _migrationRepository
           .create(MigrationDTO(name: migration.getName()));

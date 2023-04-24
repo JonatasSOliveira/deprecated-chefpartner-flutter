@@ -9,7 +9,9 @@ abstract class GenericRepository<DM extends GenericModel,
   final DM _databaseModel;
   final List<String> _defaultInsertAttributes;
 
-  GenericRepository({required databaseModel, required defaultInsertAttributes})
+  GenericRepository(
+      {required DM databaseModel,
+      required List<String> defaultInsertAttributes})
       : _databaseModel = databaseModel,
         _defaultInsertAttributes = defaultInsertAttributes;
 
@@ -30,7 +32,7 @@ abstract class GenericRepository<DM extends GenericModel,
     await dbConnection.rawInsert(script, getAttributesValues(model));
   }
 
-  Future<List<M>> listAll() async {
+  Future<List<M>> findAll() async {
     final dbConnection = await SQLiteDatabaseConnection.getDatabase();
     final script = _databaseModel.getSelectScript();
     final result = await dbConnection.rawQuery(script);
