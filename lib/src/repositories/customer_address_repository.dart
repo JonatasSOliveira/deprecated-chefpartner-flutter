@@ -1,10 +1,10 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/customer_address_dto.dart';
 import 'package:chefpartner_mobile/src/models/customer_address_model.dart';
 
-class CustomerAddressDAO
-    extends GenericDAO<CustomerAddressModel, CustomerAddressDTO> {
-  CustomerAddressDAO()
+class CustomerAddressRepository
+    extends GenericRepository<CustomerAddressModel, CustomerAddressDTO> {
+  CustomerAddressRepository()
       : super(databaseModel: CustomerAddressModel(), defaultInsertAttributes: [
           'customer_id',
           'address',

@@ -1,9 +1,10 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/migration_dto.dart';
 import 'package:chefpartner_mobile/src/models/migration_model.dart';
 
-class MigrationDAO extends GenericDAO<MigrationModel, MigrationDTO> {
-  MigrationDAO()
+class MigrationRepository
+    extends GenericRepository<MigrationModel, MigrationDTO> {
+  MigrationRepository()
       : super(databaseModel: MigrationModel(), defaultInsertAttributes: [
           'name',
         ]);
@@ -20,7 +21,7 @@ class MigrationDAO extends GenericDAO<MigrationModel, MigrationDTO> {
 
   Future<MigrationDTO?> getMigrationByName(String name) async {
     // TODO: Change where creation to model
-    final script = '${getModel().getSelectAllScript()} AND name = ? LIMIT 1';
+    final script = '${getModel().getSelectScript()} AND name = ? LIMIT 1';
     final dbConnection = await getDatabaseConnection();
     final result = await dbConnection.rawQuery(script, [name]);
     return result.toList().isNotEmpty ? fromMap(result[0]) : null;

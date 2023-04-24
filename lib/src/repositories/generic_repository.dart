@@ -4,11 +4,12 @@ import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
-abstract class GenericDAO<DM extends GenericModel, M extends GenericDTO> {
+abstract class GenericRepository<DM extends GenericModel,
+    M extends GenericDTO> {
   final DM _databaseModel;
   final List<String> _defaultInsertAttributes;
 
-  GenericDAO({required databaseModel, required defaultInsertAttributes})
+  GenericRepository({required databaseModel, required defaultInsertAttributes})
       : _databaseModel = databaseModel,
         _defaultInsertAttributes = defaultInsertAttributes;
 
@@ -31,7 +32,7 @@ abstract class GenericDAO<DM extends GenericModel, M extends GenericDTO> {
 
   Future<List<M>> listAll() async {
     final dbConnection = await SQLiteDatabaseConnection.getDatabase();
-    final script = _databaseModel.getSelectAllScript();
+    final script = _databaseModel.getSelectScript();
     final result = await dbConnection.rawQuery(script);
     return result.map((map) => fromMap(map)).toList();
   }

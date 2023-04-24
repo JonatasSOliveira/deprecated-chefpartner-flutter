@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/models/generic_model/generic_model.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:chefpartner_mobile/src/services/generic_service.dart';
 
 abstract class GenericController<M extends GenericDTO,
-    S extends GenericService<M, GenericDAO<GenericModel, M>>> {
+    S extends GenericService<M, GenericRepository<GenericModel, M>>> {
   final S _service;
 
   @protected

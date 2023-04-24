@@ -1,9 +1,9 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/models/customer_model.dart';
 import 'package:chefpartner_mobile/src/dtos/customer_dto.dart';
 
-class CustomerDAO extends GenericDAO<CustomerModel, CustomerDTO> {
-  CustomerDAO()
+class CustomerRepository extends GenericRepository<CustomerModel, CustomerDTO> {
+  CustomerRepository()
       : super(
             databaseModel: CustomerModel(),
             defaultInsertAttributes: ['name', 'federal_document']);

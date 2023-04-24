@@ -1,4 +1,5 @@
 import 'package:chefpartner_mobile/src/models/generic_model/attribute.dart';
+import 'package:chefpartner_mobile/src/models/generic_model/query_options.dart';
 
 abstract class GenericModel {
   final String _tableName;
@@ -47,8 +48,8 @@ abstract class GenericModel {
       );
     ''';
 
-  String getSelectAllScript() =>
-      'SELECT * FROM $_tableName WHERE deleted_at IS NULL';
+  String getSelectScript({QueryOptions? queryOptions}) =>
+      'SELECT * FROM $_tableName WHERE deleted_at IS NULL ${queryOptions?.toSql()}';
 
   String getUpdateScript(List<String> attributes) => '''
       UPDATE $_tableName

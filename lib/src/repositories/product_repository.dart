@@ -1,9 +1,9 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/models/product_model.dart';
 import 'package:chefpartner_mobile/src/dtos/product_dto.dart';
 
-class ProductDAO extends GenericDAO<ProductModel, ProductDTO> {
-  ProductDAO()
+class ProductRepository extends GenericRepository<ProductModel, ProductDTO> {
+  ProductRepository()
       : super(
             databaseModel: ProductModel(),
             defaultInsertAttributes: ['name', 'description', 'price']);

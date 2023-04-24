@@ -13,26 +13,37 @@ class OrderOptions {
   final String _attributeName;
   final OrderDirection _orderDirection;
 
-  const OrderOptions({required String attributeName, OrderDirection? orderDirection }): 
-    _attributeName = attributeName, _orderDirection = orderDirection ?? OrderDirection.asc;
+  const OrderOptions(
+      {required String attributeName, OrderDirection? orderDirection})
+      : _attributeName = attributeName,
+        _orderDirection = orderDirection ?? OrderDirection.asc;
 
-  String getScript() => '$_attributeName ${_orderDirection.getDirection()}';
+  String toSql() => '$_attributeName ${_orderDirection.getDirection()}';
 }
 
 class QueryOptions {
   final List<OrderOptions>? _orderBy;
+  final int? _limit;
 
-  const QueryOptions({List<OrderOptions>? orderBy}): _orderBy = orderBy;
+  const QueryOptions({List<OrderOptions>? orderBy, int? limit})
+      : _orderBy = orderBy,
+        _limit = limit;
 
-  String _getOrderByScript() {
+  String _orderByToSql() {
     if (_orderBy == null || _orderBy!.isEmpty) return '';
 
-    return ' ORDER BY ${_orderBy!.map((order) => order.getScript()).join(', ')}';
+    return ' ORDER BY ${_orderBy!.map((order) => order.toSql()).join(', ')}';
   }
 
-  String getScript() {
+  String _limitToSql() {
+    if (_limit == null) return '';
+    return ' LIMIT $_limit';
+  }
+
+  String toSql() {
     String script = '';
-    script += _getOrderByScript();
+    script += _orderByToSql();
+    script += _limitToSql();
     return script;
   }
 }

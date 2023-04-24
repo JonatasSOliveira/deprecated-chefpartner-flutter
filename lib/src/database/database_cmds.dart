@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:chefpartner_mobile/src/models/migration_model.dart';
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/models/generic_model/generic_model.dart';
 import 'package:chefpartner_mobile/src/models/city_model.dart';
 import 'package:chefpartner_mobile/src/models/country_model.dart';
@@ -33,7 +33,7 @@ class DatabaseCmds {
     }
   }
 
-  Future<void> insertDataFromJSON(String jsonPath, GenericDAO dao,
+  Future<void> insertDataFromJSON(String jsonPath, GenericRepository dao,
       Function(Map<String, dynamic>) dtoFromMap) async {
     String jsonString = await rootBundle.loadString(jsonPath);
     List<dynamic> jsonList = json.decode(jsonString);

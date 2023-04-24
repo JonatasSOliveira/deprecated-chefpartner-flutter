@@ -1,9 +1,9 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/state_dto.dart';
 import 'package:chefpartner_mobile/src/models/state_model.dart';
 
-class StateDAO extends GenericDAO<StateModel, StateDTO> {
-  StateDAO()
+class StateRepository extends GenericRepository<StateModel, StateDTO> {
+  StateRepository()
       : super(
             databaseModel: StateModel(),
             defaultInsertAttributes: ['name', 'abbreviation', 'country_id']);

@@ -1,9 +1,9 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/city_dto.dart';
 import 'package:chefpartner_mobile/src/models/city_model.dart';
 
-class CityDAO extends GenericDAO<CityModel, CityDTO> {
-  CityDAO()
+class CityRepository extends GenericRepository<CityModel, CityDTO> {
+  CityRepository()
       : super(databaseModel: CityModel(), defaultInsertAttributes: [
           'name',
         ]);

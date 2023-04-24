@@ -1,10 +1,10 @@
-import 'package:chefpartner_mobile/src/dao/generic_dao.dart';
+import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/models/payment_method_model.dart';
 import 'package:chefpartner_mobile/src/dtos/payment_method_dto.dart';
 
-class PaymentMethodDAO
-    extends GenericDAO<PaymentMethodModel, PaymentMethodDTO> {
-  PaymentMethodDAO()
+class PaymentMethodRepository
+    extends GenericRepository<PaymentMethodModel, PaymentMethodDTO> {
+  PaymentMethodRepository()
       : super(
             databaseModel: PaymentMethodModel(),
             defaultInsertAttributes: ['name']);
