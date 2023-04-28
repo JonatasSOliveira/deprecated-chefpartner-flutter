@@ -14,7 +14,7 @@ class SQLiteDatabaseConnection {
 
     String path = join(await getDatabasesPath(), 'chefpartner.db');
     _db = await openDatabase(path, onOpen: (db) async {
-      await DatabaseCmds(db).syncTables();
+      await DatabaseCmds(db).createMigrationTable();
     });
     if (!_migrationsAlreadyRunning) {
       _migrationsAlreadyRunning = true;

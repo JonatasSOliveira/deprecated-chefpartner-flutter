@@ -2,12 +2,12 @@ import 'package:sqflite/sqflite.dart';
 import 'package:chefpartner_mobile/src/repositories/migration_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/migration_dto.dart';
 import 'package:chefpartner_mobile/src/interfaces/migration_interface.dart';
-import 'package:chefpartner_mobile/src/database/migrations/migration_202304191534_update_country_state.dart';
+import 'package:chefpartner_mobile/src/database/migrations/migration_202304191534_initial_migration.dart';
 
 class DatabaseMigrationRunner {
   final Database _db;
   final MigrationRepository _migrationRepository = MigrationRepository();
-  final List<MigrationInterface> _migrations = [UpdateCountryStateMigration()];
+  final List<MigrationInterface> _migrations = [InitialMigrationMigration()];
 
   DatabaseMigrationRunner(this._db);
 
