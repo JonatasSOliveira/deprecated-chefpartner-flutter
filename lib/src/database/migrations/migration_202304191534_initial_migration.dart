@@ -1,3 +1,4 @@
+import 'package:chefpartner_mobile/src/models/enterprise_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:chefpartner_mobile/src/repositories/country_repository.dart';
 import 'package:chefpartner_mobile/src/repositories/state_repository.dart';
@@ -23,6 +24,7 @@ class InitialMigrationMigration implements MigrationInterface {
     CountryModel(),
     StateModel(),
     CityModel(),
+    EnterpriseModel(),
     CustomerModel(),
     CustomerAddressModel()
   ];
