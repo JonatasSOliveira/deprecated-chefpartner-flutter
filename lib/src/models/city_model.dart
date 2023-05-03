@@ -9,7 +9,6 @@ class CityModel extends GenericModel {
           Attribute(
               name: 'state_id',
               type: AttributeType.integer,
-              isForeignKey: true,
-              foreignTable: StateModel().getTableName()),
+              foreignTable: StateModel()),
         ]);
 }

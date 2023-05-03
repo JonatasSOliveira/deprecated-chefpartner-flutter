@@ -9,14 +9,12 @@ class CustomerAddressModel extends GenericModel {
           Attribute(
               name: 'customer_id',
               type: AttributeType.integer,
-              isForeignKey: true,
-              foreignTable: CustomerModel().getTableName()),
+              foreignTable: CustomerModel()),
           Attribute(name: 'address', type: AttributeType.text),
           Attribute(
               name: 'city_id',
               type: AttributeType.integer,
-              isForeignKey: true,
-              foreignTable: CityModel().getTableName()),
+              foreignTable: CityModel()),
           Attribute(name: 'number', type: AttributeType.text),
           Attribute(
               name: 'complement', type: AttributeType.text, isNulable: true),

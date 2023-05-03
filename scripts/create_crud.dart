@@ -13,6 +13,7 @@ void main(List<String> arguments) {
   createRepositoryFile(modelNameSnakeCase, modelNameCamelCase);
   createServiceFile(modelNameSnakeCase, modelNameCamelCase);
   createControllerFile(modelNameSnakeCase, modelNameCamelCase);
+  print('Model $modelNameSnakeCase created.');
 }
 
 String snakeToPascalCase(String str) {
@@ -30,7 +31,7 @@ String snakeToPascalCase(String str) {
 File createFile(String folderInLib, String fileName) {
   final scriptPath = Platform.script.toFilePath();
   final scriptDir = Directory(scriptPath).parent.parent;
-  final filePath = '${scriptDir.path}/lib/src/${folderInLib}/${fileName}.dart';
+  final filePath = '${scriptDir.path}/lib/src/$folderInLib/$fileName.dart';
   final file = File(filePath);
   file.createSync();
   return file;

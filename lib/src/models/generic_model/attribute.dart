@@ -1,3 +1,5 @@
+import 'package:chefpartner_mobile/src/interfaces/model_interface.dart';
+
 enum AttributeType {
   integer('INTEGER'),
   text('TEXT'),
@@ -21,14 +23,17 @@ class Attribute {
   final AttributeType type;
   final bool isNulable;
   final bool isForeignKey;
-  final String? foreignTable;
+  final ModelInterface? _foreignTable;
   final String? foreignColumn;
 
   Attribute(
       {required this.name,
       required this.type,
       this.isNulable = false,
-      this.isForeignKey = false,
-      this.foreignTable,
-      this.foreignColumn = 'id'});
+      ModelInterface? foreignTable,
+      this.foreignColumn = 'id'})
+      : _foreignTable = foreignTable,
+        isForeignKey = foreignTable != null;
+
+  String getForeignTableName() => _foreignTable?.getTableName() ?? '';
 }

@@ -10,7 +10,6 @@ class StateModel extends GenericModel {
           Attribute(
               name: 'country_id',
               type: AttributeType.integer,
-              isForeignKey: true,
-              foreignTable: CountryModel().getTableName()),
+              foreignTable: CountryModel()),
         ]);
 }
