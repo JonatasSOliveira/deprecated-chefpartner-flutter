@@ -1,7 +1,8 @@
-import 'package:chefpartner_mobile/src/repositories/enterprise_repository.dart';
+import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 import 'package:chefpartner_mobile/src/dtos/enterprise_dto.dart';
-import 'package:chefpartner_mobile/src/services/generic_service.dart';
+import 'package:chefpartner_mobile/src/services/enterprise_service.dart';
 
-class EnterpriseService extends GenericService<EnterpriseDTO, EnterpriseRepository> {
-  EnterpriseService() : super(repository: EnterpriseRepository());
+class EnterpriseController
+    extends GenericController<EnterpriseDTO, EnterpriseService> {
+  EnterpriseController() : super(service: EnterpriseService());
 }

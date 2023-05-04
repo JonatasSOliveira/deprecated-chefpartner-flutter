@@ -1,3 +1,4 @@
+import 'package:chefpartner_mobile/src/models/generic_model/query_options.dart';
 import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/enterprise_dto.dart';
 import 'package:chefpartner_mobile/src/models/enterprise_model.dart';
@@ -19,5 +20,13 @@ class EnterpriseRepository
   @override
   EnterpriseDTO fromMap(Map<String, dynamic> map) {
     return EnterpriseDTO.fromMap(map);
+  }
+
+  Future<EnterpriseDTO?> findFirstEnterprise() async {
+    final selectLastMigrationSql =
+        getModel().getSelectScript(queryOptions: const QueryOptions(limit: 1));
+    final dbConnection = await getDatabaseConnection();
+    final result = await dbConnection.rawQuery(selectLastMigrationSql);
+    return result.toList().isNotEmpty ? fromMap(result[0]) : null;
   }
 }
