@@ -121,12 +121,12 @@ void createControllerFile(
     String modelNameSnakeCase, String modelNameCamelCase) {
   final file = createFile('controllers', '${modelNameSnakeCase}_controller');
   final String content =
-      '''import 'package:chefpartner_mobile/src/repositories/${modelNameSnakeCase}_repository.dart';
+      '''import 'package:chefpartner_mobile/src/repositories/${modelNameSnakeCase}_service.dart';
 import 'package:chefpartner_mobile/src/dtos/${modelNameSnakeCase}_dto.dart';
-import 'package:chefpartner_mobile/src/services/generic_service.dart';
+import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 
-class ${modelNameCamelCase}Service extends GenericService<${modelNameCamelCase}DTO, ${modelNameCamelCase}Repository> {
-  ${modelNameCamelCase}Service() : super(repository: ${modelNameCamelCase}Repository());
+class ${modelNameCamelCase}Controller extends GenericController<${modelNameCamelCase}DTO, ${modelNameCamelCase}Service> {
+  ${modelNameCamelCase}Controller() : super(service: ${modelNameCamelCase}Service());
 }
 ''';
   file.writeAsStringSync(content);
