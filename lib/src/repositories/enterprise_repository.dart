@@ -11,7 +11,7 @@ class EnterpriseRepository
           defaultInsertAttributes: [
             'fantasy_name',
             'business_name',
-            'uuid',
+            'firebase_id',
             'federal_document'
           ],
         );
@@ -20,7 +20,7 @@ class EnterpriseRepository
   List<Object?> getAttributesValues(EnterpriseDTO model) => [
         model.getFantasyName(),
         model.getBusinessName(),
-        model.getUuid(),
+        model.getFirebaseId(),
         model.getFederalDocument(),
       ];
 

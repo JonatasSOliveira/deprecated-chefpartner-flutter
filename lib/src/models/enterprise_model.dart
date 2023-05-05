@@ -4,11 +4,11 @@ import 'package:chefpartner_mobile/src/models/generic_model/attribute.dart';
 
 class EnterpriseModel extends GenericModel {
   EnterpriseModel()
-      : super(tableName: 'modelName', attributes: [
+      : super(tableName: 'enterprise', attributes: [
           Attribute(name: 'fantasy_name', type: AttributeType.text),
           Attribute(name: 'business_name', type: AttributeType.text),
           Attribute(name: 'federal_document', type: AttributeType.text),
-          Attribute(name: 'uuid', type: AttributeType.text),
+          Attribute(name: 'firebase_id', type: AttributeType.text),
           Attribute(
               name: 'city_id',
               type: AttributeType.integer,

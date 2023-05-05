@@ -9,7 +9,7 @@ class DefaultFormComponent<DTO extends GenericDTO> extends StatefulWidget {
   final List<Widget> _children;
   final GenericController _controller;
   final DTO Function() _getDTOWithValues;
-  final Function(dynamic, DTO)? _customSaveModel;
+  final Future<void> Function(dynamic, DTO)? _customSaveModel;
 
   const DefaultFormComponent(
       {Key? key,
@@ -17,7 +17,7 @@ class DefaultFormComponent<DTO extends GenericDTO> extends StatefulWidget {
       required List<Widget> children,
       required GenericController controller,
       required DTO Function() getDTOWithValues,
-      Function(dynamic, DTO)? customSaveModel})
+      Future<void> Function(dynamic, DTO)? customSaveModel})
       : _title = title,
         _children = children,
         _controller = controller,

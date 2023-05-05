@@ -55,7 +55,7 @@ abstract class GenericModel implements ModelInterface {
 
   @override
   String getSelectScript({QueryOptions? queryOptions}) =>
-      'SELECT * FROM $_tableName WHERE deleted_at IS NULL ${queryOptions?.toSql()}';
+      'SELECT * FROM $_tableName WHERE deleted_at IS NULL ${queryOptions?.toSql() ?? ''}';
 
   @override
   String getUpdateScript(List<String> attributes) => '''

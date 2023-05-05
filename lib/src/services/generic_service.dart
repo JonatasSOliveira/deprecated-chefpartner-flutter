@@ -4,6 +4,7 @@ import 'package:chefpartner_mobile/src/exceptions/validation_exception.dart';
 import 'package:chefpartner_mobile/src/interfaces/default_validator_interface.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:chefpartner_mobile/src/views/dialogs/generic_dialog.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class GenericService<M extends GenericDTO,
     Repository extends GenericRepository<GenericModel, M>> {
@@ -14,6 +15,9 @@ abstract class GenericService<M extends GenericDTO,
       {required Repository repository, DefaultValidatorInterface<M>? validator})
       : _repository = repository,
         _validator = validator;
+
+  @protected
+  Repository getRepository() => _repository;
 
   Future<void> create(M model) async {
     try {
