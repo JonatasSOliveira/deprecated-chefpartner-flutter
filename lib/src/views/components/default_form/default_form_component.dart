@@ -9,17 +9,20 @@ class DefaultFormComponent<DTO extends GenericDTO> extends StatefulWidget {
   final List<Widget> _children;
   final GenericController _controller;
   final DTO Function() _getDTOWithValues;
+  final Function(dynamic, DTO)? _customSaveModel;
 
   const DefaultFormComponent(
       {Key? key,
       required String title,
       required List<Widget> children,
       required GenericController controller,
-      required DTO Function() getDTOWithValues})
+      required DTO Function() getDTOWithValues,
+      Function(dynamic, DTO)? customSaveModel})
       : _title = title,
         _children = children,
         _controller = controller,
         _getDTOWithValues = getDTOWithValues,
+        _customSaveModel = customSaveModel,
         super(key: key);
 
   @override
@@ -44,7 +47,11 @@ class DefaultFormComponentState<DTO extends GenericDTO>
   }
 
   void _confirmForm(BuildContext context) {
-    saveModel().then((_) => _closeForm(context));
+    Future<void> promise = widget._customSaveModel != null
+        ? widget._customSaveModel!(_id, widget._getDTOWithValues())
+        : saveModel();
+
+    promise.then((_) => _closeForm(context));
   }
 
   @override

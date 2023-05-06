@@ -19,18 +19,53 @@ class _EnterpriseFormState
     extends DefaultFormState<EnterpriseForm, EnterpriseDTO> {
   String _fantasyName = '';
   String _businessName = '';
+  String _federalDocument = '';
 
   @override
   void initInputs(EnterpriseDTO paymentMethod) {}
+
+  void _saveEnterprise(_, EnterpriseDTO enterprise) {
+    // TODO: gerar uuid do firebase
+  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
       title: 'Empresa',
       controller: EnterpriseController(),
-      getDTOWithValues: () =>
-          EnterpriseDTO(businessName: _businessName, fantasyName: _fantasyName),
-      children: [],
+      customSaveModel: _saveEnterprise,
+      getDTOWithValues: () => EnterpriseDTO(
+          businessName: _businessName,
+          fantasyName: _fantasyName,
+          federalDocument: _federalDocument),
+      children: [
+        Row(children: [
+          Expanded(
+            child: TextField(
+              decoration: const InputDecoration(
+                label: Text('Nome Fantasia'),
+              ),
+              onChanged: (value) => setState(() => _fantasyName = value),
+            ),
+          ),
+          Expanded(
+            child: TextField(
+              decoration: const InputDecoration(
+                label: Text('Razão Social'),
+              ),
+              onChanged: (value) => setState(() => _businessName = value),
+            ),
+          ),
+          Expanded(
+            child: TextField(
+              decoration: const InputDecoration(
+                label: Text('Documento Federal'),
+              ),
+              onChanged: (value) => setState(() => _federalDocument = value),
+            ),
+          )
+        ])
+      ],
     );
   }
 }

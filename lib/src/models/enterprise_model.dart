@@ -7,6 +7,7 @@ class EnterpriseModel extends GenericModel {
       : super(tableName: 'modelName', attributes: [
           Attribute(name: 'fantasy_name', type: AttributeType.text),
           Attribute(name: 'business_name', type: AttributeType.text),
+          Attribute(name: 'federal_document', type: AttributeType.text),
           Attribute(name: 'uuid', type: AttributeType.text),
           Attribute(
               name: 'city_id',

@@ -7,14 +7,21 @@ class EnterpriseRepository
     extends GenericRepository<EnterpriseModel, EnterpriseDTO> {
   EnterpriseRepository()
       : super(
-            databaseModel: EnterpriseModel(),
-            defaultInsertAttributes: ['fantasy_name', 'business_name', 'uuid']);
+          databaseModel: EnterpriseModel(),
+          defaultInsertAttributes: [
+            'fantasy_name',
+            'business_name',
+            'uuid',
+            'federal_document'
+          ],
+        );
 
   @override
   List<Object?> getAttributesValues(EnterpriseDTO model) => [
         model.getFantasyName(),
         model.getBusinessName(),
         model.getUuid(),
+        model.getFederalDocument(),
       ];
 
   @override
