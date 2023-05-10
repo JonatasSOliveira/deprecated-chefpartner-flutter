@@ -1,50 +1,30 @@
-import 'dart:io';
+import 'utils/file_utils.dart';
+import 'utils/string_utils.dart';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty) {
-    print('Usage: dart script.dart <model_name>');
+    print('Usage: dart create_crud.dart <model_name>');
     return;
   }
 
   final modelNameSnakeCase = arguments[0];
-  final modelNameCamelCase = snakeToPascalCase(modelNameSnakeCase);
-  createModelFile(modelNameSnakeCase, modelNameCamelCase);
-  createDTOFile(modelNameSnakeCase, modelNameCamelCase);
-  createRepositoryFile(modelNameSnakeCase, modelNameCamelCase);
-  createServiceFile(modelNameSnakeCase, modelNameCamelCase);
-  createControllerFile(modelNameSnakeCase, modelNameCamelCase);
+  final modelNamePascalCase = StringUtils.snakeCaseToPascalCase(modelNameSnakeCase);
+  createModelFile(modelNameSnakeCase, modelNamePascalCase);
+  createDTOFile(modelNameSnakeCase, modelNamePascalCase);
+  createRepositoryFile(modelNameSnakeCase, modelNamePascalCase);
+  createServiceFile(modelNameSnakeCase, modelNamePascalCase);
+  createControllerFile(modelNameSnakeCase, modelNamePascalCase);
   print('Model $modelNameSnakeCase created.');
 }
 
-String snakeToPascalCase(String str) {
-  List<String> parts = str.split('_');
-  String camelCase = "";
-
-  for (int i = 0; i < parts.length; i++) {
-    String word = parts[i];
-    camelCase += word[0].toUpperCase() + word.substring(1);
-  }
-
-  return camelCase;
-}
-
-File createFile(String folderInLib, String fileName) {
-  final scriptPath = Platform.script.toFilePath();
-  final scriptDir = Directory(scriptPath).parent.parent;
-  final filePath = '${scriptDir.path}/lib/src/$folderInLib/$fileName.dart';
-  final file = File(filePath);
-  file.createSync();
-  return file;
-}
-
-void createModelFile(String modelNameSnakeCase, String modelNameCamelCase) {
-  final file = createFile('models', '${modelNameSnakeCase}_model');
+void createModelFile(String modelNameSnakeCase, String modelNamePascalCase) {
+  final file = FileUtils.createFileInSrcFolder('models', '${modelNameSnakeCase}_model');
   final String content =
       '''import 'package:chefpartner_mobile/src/models/generic_model/generic_model.dart';
 import 'package:chefpartner_mobile/src/models/generic_model/attribute.dart';
 
-class ${modelNameCamelCase}Model extends GenericModel {
-  ${modelNameCamelCase}Model(): super(
+class ${modelNamePascalCase}Model extends GenericModel {
+  ${modelNamePascalCase}Model(): super(
     tableName: 'modelName',
     // TODO: define attributes
     attributes: null // [Attribute(name: 'name', type: AttributeType.text),]
@@ -54,15 +34,15 @@ class ${modelNameCamelCase}Model extends GenericModel {
   file.writeAsStringSync(content);
 }
 
-void createDTOFile(String modelNameSnakeCase, String modelNameCamelCase) {
-  final file = createFile('dtos', '${modelNameSnakeCase}_dto');
+void createDTOFile(String modelNameSnakeCase, String modelNamePascalCase) {
+  final file = FileUtils.createFileInSrcFolder('dtos', '${modelNameSnakeCase}_dto');
   final String content =
       '''import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 
-class ${modelNameCamelCase}DTO extends GenericDTO {
+class ${modelNamePascalCase}DTO extends GenericDTO {
   // TODO: define attributes
 
-  ${modelNameCamelCase}DTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
+  ${modelNamePascalCase}DTO.fromMap(Map<String, dynamic> map) : super.fromMap(map) {
     // TODO: generate fromMap
     // Example: _name = map['name'];
     throw UnimplementedError();
@@ -73,60 +53,60 @@ class ${modelNameCamelCase}DTO extends GenericDTO {
 }
 
 void createRepositoryFile(
-    String modelNameSnakeCase, String modelNameCamelCase) {
-  final file = createFile('repositories', '${modelNameSnakeCase}_repository');
+    String modelNameSnakeCase, String modelNamePascalCase) {
+  final file = FileUtils.createFileInSrcFolder('repositories', '${modelNameSnakeCase}_repository');
   final String content =
       '''import 'package:chefpartner_mobile/src/repositories/generic_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/${modelNameSnakeCase}_dto.dart';
 import 'package:chefpartner_mobile/src/models/${modelNameSnakeCase}_model.dart';
 
-class ${modelNameCamelCase}Repository extends GenericRepository<${modelNameCamelCase}Model, ${modelNameCamelCase}DTO> {
-  ${modelNameCamelCase}Repository()
+class ${modelNamePascalCase}Repository extends GenericRepository<${modelNamePascalCase}Model, ${modelNamePascalCase}DTO> {
+  ${modelNamePascalCase}Repository()
       : super(
-            databaseModel: ${modelNameCamelCase}Model(),
+            databaseModel: ${modelNamePascalCase}Model(),
             // TODO: define attributes
             defaultInsertAttributes: null //Example: ['name']
         );
 
   @override
-  List<Object?> getAttributesValues(${modelNameCamelCase}DTO model) =>
+  List<Object?> getAttributesValues(${modelNamePascalCase}DTO model) =>
       // TODO: generate getAttributesValues
       // Example: [model.getName()];
       throw UnimplementedError();
 
   @override
-  ${modelNameCamelCase}DTO fromMap(Map<String, dynamic> map) {
-    return ${modelNameCamelCase}DTO.fromMap(map);
+  ${modelNamePascalCase}DTO fromMap(Map<String, dynamic> map) {
+    return ${modelNamePascalCase}DTO.fromMap(map);
   }
 }
 ''';
   file.writeAsStringSync(content);
 }
 
-void createServiceFile(String modelNameSnakeCase, String modelNameCamelCase) {
-  final file = createFile('services', '${modelNameSnakeCase}_service');
+void createServiceFile(String modelNameSnakeCase, String modelNamePascalCase) {
+  final file = FileUtils.createFileInSrcFolder('services', '${modelNameSnakeCase}_service');
   final String content =
       '''import 'package:chefpartner_mobile/src/repositories/${modelNameSnakeCase}_repository.dart';
 import 'package:chefpartner_mobile/src/dtos/${modelNameSnakeCase}_dto.dart';
 import 'package:chefpartner_mobile/src/services/generic_service.dart';
 
-class ${modelNameCamelCase}Service extends GenericService<${modelNameCamelCase}DTO, ${modelNameCamelCase}Repository> {
-  ${modelNameCamelCase}Service() : super(repository: ${modelNameCamelCase}Repository());
+class ${modelNamePascalCase}Service extends GenericService<${modelNamePascalCase}DTO, ${modelNamePascalCase}Repository> {
+  ${modelNamePascalCase}Service() : super(repository: ${modelNamePascalCase}Repository());
 }
 ''';
   file.writeAsStringSync(content);
 }
 
 void createControllerFile(
-    String modelNameSnakeCase, String modelNameCamelCase) {
-  final file = createFile('controllers', '${modelNameSnakeCase}_controller');
+    String modelNameSnakeCase, String modelNamePascalCase) {
+  final file = FileUtils.createFileInSrcFolder('controllers', '${modelNameSnakeCase}_controller');
   final String content =
       '''import 'package:chefpartner_mobile/src/repositories/${modelNameSnakeCase}_service.dart';
 import 'package:chefpartner_mobile/src/dtos/${modelNameSnakeCase}_dto.dart';
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 
-class ${modelNameCamelCase}Controller extends GenericController<${modelNameCamelCase}DTO, ${modelNameCamelCase}Service> {
-  ${modelNameCamelCase}Controller() : super(service: ${modelNameCamelCase}Service());
+class ${modelNamePascalCase}Controller extends GenericController<${modelNamePascalCase}DTO, ${modelNamePascalCase}Service> {
+  ${modelNamePascalCase}Controller() : super(service: ${modelNamePascalCase}Service());
 }
 ''';
   file.writeAsStringSync(content);
