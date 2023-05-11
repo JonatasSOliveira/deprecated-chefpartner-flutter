@@ -5,7 +5,7 @@ class FileUtils {
   static String _getFilePathInSrc(String folderInSrc, String fileName) {
     final scriptPath = Platform.script.toFilePath();
     final scriptDir = Directory(scriptPath).parent.parent;
-    return '${scriptDir.path}/lib/src';
+    return '${scriptDir.path}/lib/src/$folderInSrc/$fileName.dart';
   }
 
   static File createFileInSrcFolder(String folderInSrc, String fileName) {
