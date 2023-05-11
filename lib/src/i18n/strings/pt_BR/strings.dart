@@ -1,4 +1,5 @@
-import 'package:chefpartner_mobile/src/i18n/strings/pt_BR/customer_strings.dart';
+import 'package:chefpartner_mobile/src/i18n/strings/pt_BR/customer_strings.dart';import 'package:chefpartner_mobile/src/interfaces/i18n/strings/enterprise_strings_interface.dart';
+import 'package:chefpartner_mobile/src/i18n/strings/pt_BR/enterprise_strings.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/customer_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/general_strings_interface.dart';
 import 'package:chefpartner_mobile/src/interfaces/i18n/strings/home_strings_interface.dart';
@@ -21,4 +22,6 @@ class PtBrStrings implements StringsInterface {
   ProductStringsInterface get product => PtBrProductStrings();
   @override
   CustomerStringsInterface get customer => PtBrCustomerStrings();
+	@override
+	EnterpriseStringsInterface get enterprise => PtBrEnterpriseStrings();
 }

@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:chefpartner_mobile/src/apis/firebase_database/enterprise_fdb.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
-import 'package:flutter/material.dart';
+import 'package:chefpartner_mobile/src/i18n/i18n.dart';
 import 'package:chefpartner_mobile/src/controllers/enterprise_controller.dart';
 import 'package:chefpartner_mobile/src/dtos/enterprise_dto.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
@@ -38,7 +39,7 @@ class _EnterpriseFormState
   @override
   Widget build(BuildContext context) {
     return DefaultFormComponent(
-      title: 'Empresa',
+      title: I18n.strings.enterprise.formTitle,
       controller: _enterpriseController,
       customSaveModel: _saveEnterprise,
       getDTOWithValues: () => EnterpriseDTO(
@@ -49,8 +50,8 @@ class _EnterpriseFormState
         Row(children: [
           Expanded(
             child: TextField(
-              decoration: const InputDecoration(
-                label: Text('Nome Fantasia'),
+              decoration: InputDecoration(
+                label: Text(I18n.strings.enterprise.fantasyName),
               ),
               onChanged: (value) => setState(() => _fantasyName = value),
             ),
@@ -59,8 +60,8 @@ class _EnterpriseFormState
         Row(children: [
           Expanded(
             child: TextField(
-              decoration: const InputDecoration(
-                label: Text('Razão Social'),
+              decoration: InputDecoration(
+                label: Text(I18n.strings.enterprise.businessName),
               ),
               onChanged: (value) => setState(() => _businessName = value),
             ),
@@ -69,8 +70,8 @@ class _EnterpriseFormState
         Row(children: [
           Expanded(
             child: TextField(
-              decoration: const InputDecoration(
-                label: Text('Documento Federal'),
+              decoration: InputDecoration(
+                label: Text(I18n.strings.enterprise.federalDocument),
               ),
               onChanged: (value) => setState(() => _federalDocument = value),
             ),
