@@ -101,7 +101,7 @@ void createControllerFile(
     String modelNameSnakeCase, String modelNamePascalCase) {
   final file = FileUtils.createFileInSrcFolder('controllers', '${modelNameSnakeCase}_controller');
   final String content =
-      '''import 'package:chefpartner_mobile/src/repositories/${modelNameSnakeCase}_service.dart';
+      '''import 'package:chefpartner_mobile/src/services/${modelNameSnakeCase}_service.dart';
 import 'package:chefpartner_mobile/src/dtos/${modelNameSnakeCase}_dto.dart';
 import 'package:chefpartner_mobile/src/controllers/generic_controller.dart';
 
