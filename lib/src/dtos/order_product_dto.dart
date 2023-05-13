@@ -22,4 +22,14 @@ class OrderProductDTO extends GenericDTO {
   int getQtd() => _qtd;
 
   int getUnitPrice() => _unitPrice;
+
+  void incrementQtd() {
+    _qtd++;
+  }
+
+  void decrementQtd() {
+    if (_qtd > 1) {
+      _qtd--;
+    }
+  }
 }

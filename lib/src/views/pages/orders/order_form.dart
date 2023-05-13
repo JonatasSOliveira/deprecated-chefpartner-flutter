@@ -19,7 +19,7 @@ class OrderForm extends StatefulWidget {
 class _OrderFormState extends State<OrderForm> {
   final ProductController _productController = ProductController();
   List<ProductDTO> _products = [];
-  List<OrderProductDTO> _orderProductsCart = [];
+  final List<OrderProductDTO> _orderProductsCart = [];
 
   @override
   void initState() {
@@ -27,9 +27,32 @@ class _OrderFormState extends State<OrderForm> {
     _productController.listAll().then((products) => _products = products);
   }
 
-  void _removeProductFromCart(ProductDTO product) {}
+  void _removeProductFromCart(ProductDTO product) {
+    final orderProductIndex = _orderProductsCart.indexWhere(
+        (orderProduct) => orderProduct.getProduct().getId() == product.getId());
+    if (orderProductIndex == -1) {
+      return;
+    }
 
-  void _addProductToCart(ProductDTO product) {}
+    final orderProduct = _orderProductsCart[orderProductIndex];
+    if (orderProduct.getQtd() > 1) {
+      orderProduct.decrementQtd();
+    } else {
+      _orderProductsCart.removeAt(orderProductIndex);
+    }
+  }
+
+  void _addProductToCart(ProductDTO product) {
+    final orderProductIndex = _orderProductsCart.indexWhere(
+        (orderProduct) => orderProduct.getProduct().getId() == product.getId());
+    if (orderProductIndex > -1) {
+      _orderProductsCart[orderProductIndex].incrementQtd();
+      return;
+    }
+
+    _orderProductsCart.add(OrderProductDTO(
+        product: product, qtd: 1, unitPrice: product.getPrice()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +68,8 @@ class _OrderFormState extends State<OrderForm> {
                     trailing: Row(mainAxisSize: MainAxisSize.min, children: [
                       IconButton(
                           icon: const Icon(Icons.remove_circle),
-                          onPressed: () => _removeProductFromCart(_products[index])),
+                          onPressed: () =>
+                              _removeProductFromCart(_products[index])),
                       IconButton(
                           icon: const Icon(Icons.add_circle),
                           onPressed: () => _addProductToCart(_products[index]))
