@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:chefpartner_mobile/src/apis/firebase_database/enterprise_fdb.dart';
 import 'package:chefpartner_mobile/src/dtos/generic_dto.dart';
 import 'package:chefpartner_mobile/src/i18n/i18n.dart';
@@ -6,6 +8,7 @@ import 'package:chefpartner_mobile/src/controllers/enterprise_controller.dart';
 import 'package:chefpartner_mobile/src/dtos/enterprise_dto.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form/default_form_component.dart';
 import 'package:chefpartner_mobile/src/views/components/default_form/default_form_state.dart';
+import 'package:chefpartner_mobile/src/views/input_formatters/cnpj_mask_text_input_formatter.dart';
 
 class EnterpriseForm extends StatefulWidget {
   static const String _routeName = '/enterprise_form';
@@ -74,6 +77,11 @@ class _EnterpriseFormState
                 label: Text(I18n.strings.enterprise.federalDocument),
               ),
               onChanged: (value) => setState(() => _federalDocument = value),
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(18),
+                CnpjMaskTextInputFormatter()
+              ],
+              keyboardType: TextInputType.number,
             ),
           )
         ])

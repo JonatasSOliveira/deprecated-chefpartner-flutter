@@ -33,7 +33,11 @@ class EnterpriseRepository
     final selectLastMigrationSql =
         getModel().getSelectScript(queryOptions: const QueryOptions(limit: 1));
     final dbConnection = await getDatabaseConnection();
-    final result = await dbConnection.rawQuery(selectLastMigrationSql);
-    return result.toList().isNotEmpty ? fromMap(result[0]) : null;
+    try {
+      final result = await dbConnection.rawQuery(selectLastMigrationSql);
+      return result.toList().isNotEmpty ? fromMap(result[0]) : null;
+    } catch (e) {
+      return null;  
+    }
   }
 }

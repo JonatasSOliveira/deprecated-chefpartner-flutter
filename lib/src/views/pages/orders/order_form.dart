@@ -29,7 +29,8 @@ class _OrderFormState extends State<OrderForm> {
 
   void _removeProductFromCart(ProductDTO product) {
     final orderProductIndex = _orderProductsCart.indexWhere(
-        (orderProduct) => orderProduct.getProduct().getId() == product.getId());
+      (orderProduct) => orderProduct.getProduct().getId() == product.getId()
+    );
     if (orderProductIndex == -1) {
       return;
     }

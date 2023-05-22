@@ -14,7 +14,8 @@ class DatabaseMigrationRunner {
   Future<void> runMigrations() async {
     final lastMigration = await _migrationRepository.findLastMigration();
     final indexLastMigration = _migrations.indexWhere(
-        (migration) => migration.getName() == lastMigration?.getName());
+      (migration) => migration.getName() == lastMigration?.getName()
+    );
     final pendingMigrations = indexLastMigration > -1
         ? _migrations.sublist(indexLastMigration)
         : _migrations;
