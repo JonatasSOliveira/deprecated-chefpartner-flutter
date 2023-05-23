@@ -1,16 +1,11 @@
-# chefpartner_mobile
+# ChefPartner
 
-A new Flutter project.
+**[PT-BR]**
 
-## Getting Started
+## 1. Objetivo Geral
 
-This project is a starting point for a Flutter application.
+O propósito geral do aplicativo trata-se em ser uma ferramenta para auxiliar estabelecimentos do ramo alimentício, principalmente MEI e pequenas empresas, a controlar, de maneira rápida e eficiente, seus produtos, clientes e pedidos por meio de dispositivos móveis. Desta forma, o projeto visa poupar recursos e tempo dos usuários.
 
-A few resources to get you started if this is your first Flutter project:
+## 2. Tecnologias Utilizadas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+O projeto atualmente se encontra sendo desenvolvido utilizando a linguagem de programação Dart e o framework Flutter. Os principais módulos (pacotes) utilizados até o momento são: sqflite, firebase_database e intl
